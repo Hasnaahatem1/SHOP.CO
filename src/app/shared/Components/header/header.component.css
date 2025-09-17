@@ -1,0 +1,20 @@
+.navbar-nav .nav-link {
+  color: #333;
+  transition: all 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+  color: #ffb400; /* ذهبي */
+  transform: translateY(-2px);
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #ffb400;
+}
+/* header.component.css */
+a.text-decoration-none:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+

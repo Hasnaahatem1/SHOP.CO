@@ -1,0 +1,18 @@
+.card{
+  
+  height: 510px;
+  padding: 20px;
+}
+.card img{
+height: 170px;
+}
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+.btn:hover {
+  background-color: #ffb400;
+  border: none;
+}
+.reviews-section{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -1,0 +1,809 @@
+[
+    {
+    "id": 4,
+    "title": "Mens Casual Slim Fit",
+    "price": 15.99,
+    "description": "The color could be slightly different between on the screen and in practice.",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_t.png",
+    "rating": { "rate": 2.1, "count": 430 }
+  },
+   {
+    "id": 97,
+    "title": "Men's Casual Hoodie",
+    "price": 40.00,
+    "description": "Comfortable hoodie for everyday wear.",
+    "category": "men's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.rjUAzqGaQeelI9xOhIrTaQHaHa?w=1600&h=1600&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 85 }
+  },
+    
+  {
+    "id": 100,
+    "title": "Women's Fitness Jacket",
+    "price": 55.00,
+    "description": "Lightweight jacket for workouts and outdoor activities.",
+    "category": "women's clothing",
+    "image":"https://as2.ftcdn.net/v2/jpg/05/70/08/83/1000_F_570088345_XOxLn9UMFtU7eHUg8PNWrao3kmNuBonv.jpg",
+    "rating": { "rate": 4.5, "count": 90 }
+  }
+
+,
+ 
+  {
+    "id": 2,
+    "title": "Mens Casual Premium Slim Fit T-Shirts",
+    "price": 22.3,
+    "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket.",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+    "rating": { "rate": 4.1, "count": 259 }
+  },
+  {
+    "id": 3,
+    "title": "Mens Cotton Jacket",
+    "price": 55.99,
+    "description": "Great outerwear jackets for Spring/Autumn/Winter.",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
+    "rating": { "rate": 4.7, "count": 500 }
+  },
+ 
+  {
+    "id": 5,
+    "title": "John Hardy Women's Legends Naga Gold & Silver Dragon Bracelet",
+    "price": 695,
+    "description": "Inspired by the mythical water dragon that protects the ocean's pearl.",
+    "category": "jewelery",
+    "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_t.png",
+    "rating": { "rate": 4.6, "count": 400 }
+  },
+
+  {
+    "id": 6,
+    "title": "Solid Gold Petite Micropave",
+    "price": 168,
+    "description": "Return or exchange any order within 30 days.",
+    "category": "jewelery",
+    "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_t.png",
+    "rating": { "rate": 3.9, "count": 70 }
+  },
+  {
+    "id": 7,
+    "title": "White Gold Plated Princess",
+    "price": 9.99,
+    "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her.",
+    "category": "jewelery",
+    "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_t.png",
+    "rating": { "rate": 3, "count": 400 }
+  },
+  {
+    "id": 8,
+    "title": "Pierced Owl Rose Gold Plated Stainless Steel Double",
+    "price": 10.99,
+    "description": "Rose Gold Plated Double Flared Tunnel Plug Earrings.",
+    "category": "jewelery",
+    "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_t.png",
+    "rating": { "rate": 1.9, "count": 100 }
+  },
+  {
+    "id": 9,
+    "title": "BIYLACLESEN Women's 3-in-1 Snowboard Jacket Winter Coats",
+    "price": 56.99,
+    "description": "3 in 1 Detachable Design provides more convenience.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_t.png",
+    "rating": { "rate": 2.6, "count": 235 }
+  },
+  {
+    "id": 10,
+    "title": "Lock and Love Women's Removable Hooded Faux Leather Moto Jacket",
+    "price": 29.95,
+    "description": "Faux leather material for style and comfort.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+    "rating": { "rate": 2.9, "count": 340 }
+  },
+  {
+    "id": 11,
+    "title": "Rain Jacket Women Windbreaker Striped Climbing Raincoats",
+    "price": 39.99,
+    "description": "Lightweight perfect for trip or casual wear.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/71HblAHs5xL._AC_UY879_-2t.png",
+    "rating": { "rate": 3.8, "count": 679 }
+  },
+  {
+    "id": 12,
+    "title": "MBJ Women's Solid T-Shirt Sleeve Boat Neck V",
+    "price": 9.85,
+    "description": "Lightweight fabric with great stretch for comfort.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/71z3kpMAYsL._AC_UY879_t.png",
+    "rating": { "rate": 4.7, "count": 130 }
+  },
+  {
+    "id": 13,
+    "title": "Opna Women's T-Shirt Sleeve Moisture",
+    "price": 7.95,
+    "description": "Highly breathable with moisture wicking fabric.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/51eg55uWmdL._AC_UX679_t.png",
+    "rating": { "rate": 4.5, "count": 146 }
+  },
+  {
+    "id": 14,
+    "title": "DANVOUY Womens T Shirt Casual Cotton Short",
+    "price": 12.99,
+    "description": "Soft fabric with some stretch.",
+    "category": "women's clothing",
+    "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_t.png",
+    "rating": { "rate": 3.6, "count": 145 }
+  },
+  {
+    "id": 15,
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use.",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+    "rating": { "rate": 3.9, "count": 120 }
+  },
+  
+  {
+    "id": 17,
+    "title": "Mens Cotton Jacket",
+    "price": 55.99,
+    "description": "Great outerwear jackets for Spring/Autumn/Winter.",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
+    "rating": { "rate": 4.7, "count": 500 }
+  },
+ 
+  {
+    "id": 19,
+    "title": "Classic Leather Women's Handbag",
+    "price": 45.99,
+    "description": "Elegant leather handbag suitable for everyday use.",
+    "category": "women's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.ASJT3mkD0FHXY2ZYC7CUpAHaHa?w=800&h=800&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 210 }
+  },
+  {
+    "id": 20,
+    "title": "Sports Running Shoes Men",
+    "price": 65.50,
+    "description": "Lightweight and comfortable running shoes for men.",
+    "category": "men's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.fPrGfj8pPArOoj9fdamMGQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 180 }
+  },
+  {
+    "id": 21,
+    "title": "Elegant Silk Scarf",
+    "price": 19.99,
+    "description": "Soft silk scarf for casual and formal wear.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.VQZhKiFIb7u1A5uemjK65gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 90 }
+  },
+  {
+    "id": 22,
+    "title": "Vintage Sunglasses Unisex",
+    "price": 12.99,
+    "description": "Trendy sunglasses for men and women.",
+    "category": "accessories",
+    "image": "https://media-photos.depop.com/b1/26235963/1568097669_a9651f307c2640a28869dd99d3918e42/P0.jpg",
+    "rating": { "rate": 3.8, "count": 150 }
+  },
+  {
+    "id": 23,
+    "title": "Leather Wallet Men",
+    "price": 24.50,
+    "description": "Durable leather wallet with multiple compartments.",
+    "category": "men's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.VaaERU9it3Z6qtwfxVt7tAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 130 }
+  },
+  {
+    "id": 24,
+    "title": "Casual Hoodie Women",
+    "price": 29.99,
+    "description": "Comfortable hoodie for casual wear.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.s-hf9jMrZr2Bm6kSPHPBkQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 100 }
+  },
+  {
+    "id": 25,
+    "title": "Elegant Dress Women",
+    "price": 75.00,
+    "description": "Perfect dress for parties and events.",
+    "category": "women's clothing",
+    "image": "https://ae01.alicdn.com/kf/HTB1DiBZXijrK1RjSsplxh4HmVXat/BP-solid-color-Retro-dresses-Vintage-Sexy-Women-Long-Sleeve-Off-Shoulder-pleated-wave-shape-neck.jpeg",
+    "rating": { "rate": 4.5, "count": 200 }
+  }
+  ,
+  {
+    "id": 26,
+    "title": "Casual Sneakers Women",
+    "price": 49.99,
+    "description": "Comfortable sneakers for daily wear.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.S7C4oOVO455BNr-ajbwfEgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 170 }
+  },
+  {
+    "id": 27,
+    "title": "Men's Formal Shirt",
+    "price": 39.99,
+    "description": "Perfect for office and casual events.",
+    "category": "men's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.S9uVZEhnMaS-0vF6f39GgQDIEs?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 210 }
+  },
+  {
+    "id": 28,
+    "title": "Women's Summer Dress",
+    "price": 34.50,
+    "description": "Lightweight summer dress for daily wear.",
+    "category": "women's clothing",
+    "image": "https://cdna.lystit.com/400/500/tr/photos/saksfifthavenue/7095f615/maria-cher-Blue-Print-Zapala-Maren-Floral-Maxi-Dress.jpeg",
+    "rating": { "rate": 4.3, "count": 145 }
+  },
+  {
+    "id": 29,
+    "title": "Men's Leather Belt",
+    "price": 22.00,
+    "description": "High-quality leather belt for casual and formal wear.",
+    "category": "men's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.ndSh3HWkDlGeea08mlhBwgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 95 }
+  },
+  {
+    "id": 30,
+    "title": "Women's Handbag Tote",
+    "price": 55.99,
+    "description": "Spacious tote handbag for daily use.",
+    "category": "women's clothing",
+    "image": "https://ae01.alicdn.com/kf/HTB1kKFjlr_I8KJjy1Xaq6zsxpXaJ/Annmouler-Fashion-Women-Bag-Solid-Color-Handbags-Pu-Leather-Casual-Tote-Bags-7-Colors-Office-Ladies.jpg",
+    "rating": { "rate": 4.5, "count": 130 }
+  },
+  {
+    "id": 31,
+    "title": "Men's Casual Shorts",
+    "price": 25.50,
+    "description": "Comfortable shorts for summer activities.",
+    "category": "men's clothing",
+    "image": "https://ae01.alicdn.com/kf/S974d11782e4144efb88b71786c3a6075X/Men-Casual-Shorts-New-Summer-Male-Fashion-Casual-Short-Men-s-Solid-Color-Fitness-Breathable-Shorts.jpg",
+    "rating": { "rate": 4.0, "count": 110 }
+  },
+  {
+    "id": 32,
+    "title": "Women's Yoga Pants",
+    "price": 29.95,
+    "description": "Stretchy and breathable pants for yoga and workouts.",
+    "category": "women's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.YLYxc7A4BotmE1ywrW9LUAHaJQ?w=1024&h=1280&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 85 }
+  },
+  {
+    "id": 33,
+    "title": "Men's Hoodie Sweatshirt",
+    "price": 35.00,
+    "description": "Warm hoodie for casual outings.",
+    "category": "men's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.GKUJU3E9IgYXuSmjxKKIUQHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 120 }
+  },
+  {
+    "id": 34,
+    "title": "Women's Winter Coat",
+    "price": 89.99,
+    "description": "Stylish and warm winter coat.",
+    "category": "women's clothing",
+    "image": "https://ae01.alicdn.com/kf/Sde5e110d7f324e8cb7896192cec313d6w/Winter-Coats-Women-Jackets-New-Slim-Long-Sleeve-Basic-Winter-Jackets-Women-Coats-Warm-Cotton-Outerwear.jpg",
+    "rating": { "rate": 4.6, "count": 160 }
+  },
+  {
+    "id": 35,
+    "title": "Men's Casual Sneakers",
+    "price": 52.50,
+    "description": "Lightweight sneakers for everyday wear.",
+    "category": "men's clothing",
+    "image":"https://tse2.mm.bing.net/th/id/OIP._2d8j5qIqK0g9AechWyCFAHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 140 }
+  },
+  {
+    "id": 36,
+    "title": "Women's Summer Sandals",
+    "price": 19.99,
+    "description": "Comfortable sandals for summer outings.",
+    "category": "women's clothing",
+    "image":"https://tse2.mm.bing.net/th/id/OIP.bMtwOvEukWJlrftG-ATa5QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 90 }
+  },
+  {
+    "id": 37,
+    "title": "Men's Slim Fit Jeans",
+    "price": 45.00,
+    "description": "Classic slim fit denim jeans.",
+    "category": "men's clothing",
+    "image":"https://tse4.mm.bing.net/th/id/OIP.g_4HcwrFVDd3u1EU55XhSAHaJo?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 200 }
+  },
+  {
+    "id": 38,
+    "title": "Women's Leather Boots",
+    "price": 65.99,
+    "description": "Durable and stylish leather boots.",
+    "category": "women's clothing",
+    "image":"https://tse3.mm.bing.net/th/id/OIP.giDt4Qq-WpgrMEvoHC4u_gAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 110 }
+  },
+  {
+    "id": 39,
+    "title": "Men's Casual T-Shirt",
+    "price": 18.50,
+    "description": "Breathable cotton t-shirt for everyday use.",
+    "category": "men's clothing",
+    "image":"https://tse2.mm.bing.net/th/id/OIP.HjlQf9ZB3STPq6bju3utdQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 150 }
+  },
+  {
+    "id": 40,
+    "title": "Women's Evening Clutch Bag",
+    "price": 29.99,
+    "description": "Elegant clutch for parties and events.",
+    "category": "women's clothing",
+    "image":"https://di2ponv0v5otw.cloudfront.net/posts/2021/05/28/60b1b495c7c1716441d106a4/m_60b1b6a33cda8827786fbe6a.jpeg",
+    "rating": { "rate": 4.3, "count": 100 }
+  },
+  {
+    "id": 41,
+    "title": "Men's Leather Jacket",
+    "price": 120.00,
+    "description": "Classic leather jacket for casual and formal wear.",
+    "category": "men's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.L_UM0wnkZXKjP58yLCQznQHaGs?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.6, "count": 130 }
+  },
+  {
+    "id": 42,
+    "title": "Women's Casual Blouse",
+    "price": 27.50,
+    "description": "Lightweight blouse for casual wear.",
+    "category": "women's clothing",
+    "image":"https://tse3.mm.bing.net/th/id/OIP.EjOm-b07Q1KOh7oFj73DlQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 95 }
+  },
+  {
+    "id": 43,
+    "title": "Men's Formal Pants",
+    "price": 49.99,
+    "description": "Elegant pants for office and formal events.",
+    "category": "men's clothing",
+    "image":"https://tse2.mm.bing.net/th/id/OIP.761-vtHopGsA_p6KhUrguQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 110 }
+  },
+  {
+    "id": 44,
+    "title": "Women's Summer Hat",
+    "price": 15.99,
+    "description": "Stylish sun hat for summer outings.",
+    "category": "women's clothing",
+    "image":"https://tse4.mm.bing.net/th/id/OIP.8DEq0GmQhz6vgLUUbSS-ywHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 80 }
+  },
+  
+  {
+    "id": 46,
+    "title": "Women's Casual Sneakers",
+    "price": 49.50,
+    "description": "Comfortable sneakers for daily activities.",
+    "category": "women's clothing",
+    "image":"https://th.bing.com/th/id/R.9c235d09baf1b5aaf669587f7b9aa998?rik=jVR3ZWvDr1J6Sw&pid=ImgRaw&r=0",
+    "rating": { "rate": 4.2, "count": 120 }
+  },
+  {
+    "id": 47,
+    "title": "Men's Polo Shirt",
+    "price": 35.00,
+    "description": "Classic polo shirt for casual wear.",
+    "category": "men's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.2j9z-YcSSD4gtYy_llQrNgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.0, "count": 140 }
+  },
+  {
+    "id": 48,
+    "title": "Women's Leather Handbag",
+    "price": 75.00,
+    "description": "Elegant leather handbag for everyday use.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.DFNMvDhwEFHBZL2uw5lZjwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 160 }
+  },
+  {
+    "id": 49,
+    "title": "Men's Winter Coat",
+    "price": 120.99,
+    "description": "Warm winter coat with classic design.",
+    "category": "men's clothing",
+    "image":"https://tse1.mm.bing.net/th/id/OIP.3ytVv4ekT-OgF1vQHdZe3AHaLy?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.6, "count": 110 }
+  },
+
+  {
+    "id": 50,
+    "title": "Women's Fitness Leggings",
+    "price": 29.99,
+    "description": "Comfortable leggings for workouts and casual wear.",
+    "category": "women's clothing",
+    "image":"https://media-photos.depop.com/b1/44502218/1853147409_0358e39f0cb84a6295e2cc739ea58cdb/P0.jpg",
+    "rating": { "rate": 4.4, "count": 125 }
+  },
+  {
+    "id": 52,
+    "title": "Women's Casual Jacket",
+    "price": 65.00,
+    "description": "Stylish jacket for daily wear.",
+    "category": "women's clothing",
+    "image":"https://tse3.mm.bing.net/th/id/OIP.0Pvt5b-scEaHtHwOgixiaAHaJ4?w=1500&h=2000&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 110 }
+  },
+  {
+    "id": 54,
+    "title": "Women's Sneakers",
+    "price": 49.99,
+    "description": "Comfortable sneakers for casual wear.",
+    "category": "women's clothing",
+    "image":"https://tse4.mm.bing.net/th/id/OIP.l__njniGLXNYlbaGB15obQHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 130 }
+  },
+  {
+    "id": 56,
+    "title": "Women's Casual Blazer",
+    "price": 70.00,
+    "description": "Elegant blazer for office and casual outings.",
+    "category": "women's clothing",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_5_mD9hfTzAyXUVoCr3J5wqj1hZtq6zft6A&usqp=CAU",
+    "rating": { "rate": 4.6, "count": 85 }
+  },
+  {
+    "id": 58,
+    "title": "Women's Summer Top",
+    "price": 22.50,
+    "description": "Lightweight top for summer days.",
+    "category": "women's clothing",
+    "image": "https://i.pinimg.com/originals/a5/9e/9d/a59e9d9da97c1907443f46f0ef01ccbf.jpg",
+    "rating": { "rate": 4.3, "count": 95 }
+  },
+  {
+    "id": 60,
+    "title": "Women's Evening Dress",
+    "price": 79.99,
+    "description": "Elegant evening dress for parties.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.X3OVQDW1oGZFOs2tOTZwuAHaLH?w=1024&h=1536&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.7, "count": 70 }
+  },
+  {
+    "id": 62,
+    "title": "Women's Casual Skirt",
+    "price": 34.50,
+    "description": "Comfortable and stylish skirt for daily wear.",
+    "category": "women's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.cOgTpsbhXUtmNxRzQAdTtAHaKz?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 90 }
+  },
+  {
+    "id": 64,
+    "title": "Women's Fitness Top",
+    "price": 26.50,
+    "description": "Breathable top for workouts.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.LOQCogoJuPsRmAzO53weQgHaJ4?w=1500&h=2000&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 95 }
+  },
+  {
+    "id": 66,
+    "title": "Women's Sandals",
+    "price": 19.99,
+    "description": "Comfortable sandals for casual summer wear.",
+    "category": "women's clothing",
+    "image": "https://i5.walmartimages.com/seo/Almusen-Women-Sandals-Dressy-Summer-Sandals-for-Women-Shoes-Open-Toe-Rhinestone-Size-7-5_052cd662-b73a-4eaa-8b89-a7fdf63d4f56.547e4dc25ee3071d2a1d82c9e249dcc0.jpeg?odnHeight=424&odnWidth=424&odnBg=FFFFFF",
+    "rating": { "rate": 4.2, "count": 80 }
+  },
+  {
+    "id": 68,
+    "title": "Women's Hoodie Sweatshirt",
+    "price": 40.00,
+    "description": "Warm hoodie for casual outings.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.cueg6pQPrBQU5gBJCpb_ewHaJ3?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 100 }
+  },
+  {
+    "id": 70,
+    "title": "Women's Casual Pants",
+    "price": 32.50,
+    "description": "Comfortable pants for daily wear.",
+    "category": "women's clothing",
+    "image": "https://cdn.yoursclothing.com/Images/ProductImages/Big/e816faec-cab8-4c_143744_X.jpg",
+    "rating": { "rate": 4.3, "count": 85 }
+  },
+  {
+    "id": 72,
+    "title": "Women's Fitness Shorts",
+    "price": 24.99,
+    "description": "Lightweight shorts for workouts and running.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.aZaTP2auq1TmKOtdpbL58AHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 80 }
+  },
+  {
+    "id": 74,
+    "title": "Women's Casual Blouse",
+    "price": 27.50,
+    "description": "Lightweight blouse for daily wear.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.M7aslaH5tVW-VVZJqzrR7wHaJ4?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 90 }
+  }
+,
+  {
+    "id": 75,
+    "title": "Men's Casual Sneakers",
+    "price": 52.00,
+    "description": "Comfortable sneakers for daily wear.",
+    "category": "men's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.FBej38SPi1cG4vgS-quBVwAAAA?w=450&h=450&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 110 }
+  },
+  {
+    "id": 76,
+    "title": "Women's Casual Sneakers",
+    "price": 48.50,
+    "description": "Comfortable sneakers for daily wear and casual outings.",
+    "category": "women's clothing",
+    "image": "https://images-na.ssl-images-amazon.com/images/I/61oa+rlwTiL.jpg",
+    "rating": { "rate": 4.4, "count": 100 }
+  },
+  {
+    "id": 77,
+    "title": "Men's Casual Trousers",
+    "price": 39.99,
+    "description": "Lightweight trousers for casual wear.",
+    "category": "men's clothing",
+    "image": "https://th.bing.com/th/id/R.18df10a00aa54e9af75e93e33c504bc6?rik=07KuvbM4zXfPog&riu=http%3a%2f%2fwww.stmeergroup.com%2fupload%2f20240408145058.jpg&ehk=MHCYssjz7dmwpZb%2foJABFx%2fuJ%2bkZiJU%2b%2fr5%2bjSFgbrI%3d&risl=&pid=ImgRaw&r=0",
+    "rating": { "rate": 4.2, "count": 90 }
+  },
+  {
+    "id": 78,
+    "title": "Women's Casual Jacket",
+    "price": 62.50,
+    "description": "Stylish jacket for casual outings and office wear.",
+    "category": "women's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.PS02f8xIlPmXdf7Ks456YwAAAA?w=465&h=606&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 85 }
+  },
+  {
+    "id": 79,
+    "title": "Men's Fitness Tank Top",
+    "price": 22.50,
+    "description": "Breathable tank top for workouts.",
+    "category": "men's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.mD-eJ6-MhU90FAz4ZyZS2wHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 75 }
+  },
+  {
+    "id": 80,
+    "title": "Women's Casual Skirt",
+    "price": 35.99,
+    "description": "Comfortable skirt for casual daily wear.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.2QEZAXnITfEzlcOgbT-3KQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 80 }
+  },
+  {
+    "id": 81,
+    "title": "Men's Leather Shoes",
+    "price": 80.00,
+    "description": "Classic leather shoes for formal occasions.",
+    "category": "men's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.TlVabgYlxfoocideJOLQRQHaIp?w=640&h=747&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 70 }
+  },
+  {
+    "id": 82,
+    "title": "Women's Summer Dress",
+    "price": 55.00,
+    "description": "Lightweight summer dress for casual wear.",
+    "category": "women's clothing",
+    "image": "https://thumbs.dreamstime.com/z/little-black-dress-golden-belt-isolated-white-39851579.jpg",
+    "rating": { "rate": 4.6, "count": 65 }
+  },
+  {
+    "id": 83,
+    "title": "Men's Hoodie Sweatshirt",
+    "price": 40.00,
+    "description": "Warm hoodie for everyday casual wear.",
+    "category": "men's clothing",
+    "image": "https://i5.walmartimages.com/seo/GBH-Men-s-Heavyweight-Sherpa-Fleece-Lined-Zip-Hoodie_9d26eec7-6708-4489-8493-433ff8245c26_1.efea0104ca08f40d06aeaa35f141a58c.jpeg",
+    "rating": { "rate": 4.2, "count": 95 }
+  },
+  {
+    "id": 84,
+    "title": "Women's Cardigan Sweater",
+    "price": 48.99,
+    "description": "Soft cardigan for casual and office wear.",
+    "category": "women's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.zlQMdpu2i-tKkk7XqDrzEAHaJ4?w=960&h=1280&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 80 }
+  },
+  {
+    "id": 85,
+    "title": "Men's Casual Shorts",
+    "price": 28.50,
+    "description": "Lightweight shorts for casual outings.",
+    "category": "men's clothing",
+    "image": "https://cdn11.bigcommerce.com/s-mwfxpt20h9/products/594/images/15212/BK4107-BGR-300__45798.1657823230.386.513.jpg?c=1",
+    "rating": { "rate": 4.1, "count": 90 }
+  },
+  {
+    "id": 86,
+    "title": "Women's Evening Gown",
+    "price": 120.00,
+    "description": "Elegant gown for formal events.",
+    "category": "women's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.9n6sSyFH4gD9xrmzkqhm-AHaHa?w=600&h=600&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.8, "count": 50 }
+  },
+  {
+    "id": 87,
+    "title": "Men's Formal Belt",
+    "price": 25.00,
+    "description": "Leather belt for formal and casual outfits.",
+    "category": "men's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.5OQb2YdjzJ-DW10XgxLBJAHaJ4?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 85 }
+  },
+  {
+    "id": 88,
+    "title": "Women's Running Shoes",
+    "price": 52.00,
+    "description": "Lightweight running shoes for everyday use.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP._UlhjUVhhwSr3uxK_SjKxgHaHa?w=800&h=800&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 90 }
+  },
+  {
+    "id": 89,
+    "title": "Men's Casual Shirt",
+    "price": 34.99,
+    "description": "Stylish shirt for casual wear.",
+    "category": "men's clothing",
+    "image": "https://th.bing.com/th/id/OIP.n7Q4djxSh-EdN0HBZ-zXgQHaKk?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 95 }
+  },
+  {
+    "id": 90,
+    "title": "Women's Fitness Leggings",
+    "price": 29.99,
+    "description": "Comfortable leggings for sports and workouts.",
+    "category": "women's clothing",
+    "image": "https://i5.walmartimages.com/seo/Ayfxijin-Women-s-Yoga-Pants-Halloween-Striped-Print-Leggings-Sports-Fitness-Pants-Fitting-Tight-Yoga-Stretch-Pants_648b7b90-95a0-400f-8c4c-5234d646492f.09694f5e8d2a2c49b8d38ca82e4a9a99.jpeg",
+    "rating": { "rate": 4.4, "count": 100 }
+  },
+  {
+    "id": 91,
+    "title": "Men's Casual Sneakers",
+    "price": 55.00,
+    "description": "Comfortable sneakers for everyday use.",
+    "category": "men's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.T-MhjOtM_KBnDmhkCqkfHgHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 110 }
+  },
+  {
+    "id": 92,
+    "title": "Women's Summer Blouse",
+    "price": 24.99,
+    "description": "Lightweight blouse for summer days.",
+    "category": "women's clothing",
+    "image": "https://i.etsystatic.com/51975487/r/il/fddd9b/6113265672/il_600x600.6113265672_6tdi.jpg",
+    "rating": { "rate": 4.2, "count": 85 }
+  },
+  {
+    "id": 93,
+    "title": "Men's Sports Jacket",
+    "price": 70.00,
+    "description": "Windproof jacket for outdoor activities.",
+    "category": "men's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.r1XpCv5echzOrb1gyphZegHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.5, "count": 95 }
+  },
+  {
+    "id": 94,
+    "title": "Women's Casual Pants",
+    "price": 35.50,
+    "description": "Comfortable pants for casual wear.",
+    "category": "women's clothing",
+    "image": "https://cdn.mitchellstores.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeFJRREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--3f400ceb98c504af18f3d15c945254a275cda782/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDam9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRHpJNE1EQjROREl3TUQ0R093WlVPZ3B6ZEhKcGNGUTZFR0YxZEc4dGIzSnBaVzUwVkRvTWNYVmhiR2wwZVVraUNEYzFKUVk3QmxRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--2194f4ba90266e988b82b869a61bc64b50c6873c/uploading-1258452-jpg20191021-4-5c6m97.jpg",
+    "rating": { "rate": 4.3, "count": 80 }
+  },
+  {
+    "id": 95,
+    "title": "Men's Leather Jacket",
+    "price": 120.00,
+    "description": "Stylish leather jacket for casual and formal wear.",
+    "category": "men's clothing",
+    "image": "https://brandslock.com/5633-thickbox_default/men-s-black-genuine-leather-biker-jacket.jpg",
+    "rating": { "rate": 4.6, "count": 70 }
+  },
+  {
+    "id": 96,
+    "title": "Women's Casual Hoodie",
+    "price": 38.50,
+    "description": "Warm hoodie for daily casual wear.",
+    "category": "women's clothing",
+    "image": "https://tse3.mm.bing.net/th/id/OIP.nDpZQhfcb1aR-4uTZRbLKAHaHa?w=1600&h=1600&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 90 }
+  },
+  {
+    "id": 97,
+    "title": "Men's Casual Shorts",
+    "price": 30.00,
+    "description": "Lightweight shorts for everyday use.",
+    "category": "men's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.sqyHEibK3CUNWnR2p-2JuAAAAA?w=440&h=440&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.2, "count": 85 }
+  },
+  {
+    "id": 98,
+    "title": "Women's Summer Dress",
+    "price": 60.00,
+    "description": "Elegant summer dress for casual and office wear.",
+    "category": "women's clothing",
+    "image": "https://thumbs.dreamstime.com/z/dress-clothes-rack-white-satin-mini-hanging-black-isolated-over-130438261.jpg",
+    "rating": { "rate": 4.6, "count": 70 }
+  },
+  {
+    "id": 98,
+    "title": "Women's Summer Sandals",
+    "price": 22.50,
+    "description": "Lightweight and stylish sandals for summer.",
+    "category": "women's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.-8EayKHgw1-QoUQjqAye5gHaHa?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.3, "count": 70 }
+  },
+  {
+    "id": 99,
+    "title": "Men's Running Shorts",
+    "price": 27.99,
+    "description": "Breathable shorts perfect for running and sports.",
+    "category": "men's clothing",
+    "image": "https://tse4.mm.bing.net/th/id/OIP.dozKDJ3Y0fzGLL1hNYDE0QHaHS?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 90 }
+  },
+  {
+    "id": 100,
+    "title": "Women's Casual Tote Bag",
+    "price": 49.99,
+    "description": "Spacious and stylish tote bag for daily use.",
+    "category": "women's clothing",
+    "image": "https://tse1.mm.bing.net/th/id/OIP.fI01A3Sp9bAVUGuH69huhwHaFj?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.4, "count": 60 }
+  },
+   {
+    "id": 99,
+    "title": "Men's Casual Cap",
+    "price": 18.50,
+    "description": "Comfortable cap for daily wear.",
+    "category": "men's clothing",
+    "image": "https://tse2.mm.bing.net/th/id/OIP.aYdNpenNR96MgIPBzNDw1wHaGM?rs=1&pid=ImgDetMain&o=7&rm=3",
+    "rating": { "rate": 4.1, "count": 95 }
+  }
+]
+
+
+

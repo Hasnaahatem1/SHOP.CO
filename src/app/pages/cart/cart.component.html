@@ -1,0 +1,90 @@
+<div class="container my-5">
+  <div class="row">
+    <!-- Left: Cart Items -->
+    <div class="col-lg-8">
+      <h2 class="fw-bold mb-4">Your Cart</h2>
+
+      <div *ngIf="cart$ | async as cart; else empty">
+        <div *ngFor="let item of cart; let i = index" 
+             class="position-relative border rounded p-3 mb-3 shadow-sm">
+
+          <!-- Delete Icon -->
+          <button class="btn btn-link text-danger position-absolute top-0 end-0 m-2 fs-5"
+                  (click)="removeItem(i)">
+          <i class="fa-solid fa-trash"></i>
+          </button>
+
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+              <img [src]="item.image" alt="{{item.title}}"
+                   class="rounded me-3" style="width: 120px;  object-fit: cover;">
+              <div>
+                <h5 class="mb-1">{{ item.title }}</h5>
+                <p class="text-muted mb-1" style="max-width: 380px; overflow: hidden; text-overflow: ellipsis;">
+                  {{ item.description }}
+                </p>
+                <p class="text-muted mb-1">Category: {{ item.category }}</p>
+                <h5 class="fw-bold text-dark mt-2">{{ (item.price | currency:'USD') }}</h5>
+              </div>
+            </div>
+
+            <!-- Quantity Controls -->
+            <div class="d-flex align-items-center">
+              <button class="btn btn-outline-secondary btn-sm me-2" (click)="decreaseQty(i)">−</button>
+              <span class="fw-bold">{{ item.quantity || 1 }}</span>
+              <button class="btn btn-outline-secondary btn-sm ms-2" (click)="increaseQty(i)">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #empty>
+        <div class="alert alert-info">Your cart is empty 🛍</div>
+      </ng-template>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="col-lg-4">
+      <div class="border rounded p-4 shadow-sm">
+        <h5 class="fw-bold mb-3">Order Summary</h5>
+
+        <div class="d-flex justify-content-between mb-2">
+          <span>Subtotal</span>
+          <span>{{ subtotal$ | async | currency:'USD' }}</span>
+        </div>
+
+        <div class="d-flex justify-content-between mb-2 text-danger">
+          <span>Discount</span>
+          <span>-{{ discount$ | async | currency:'USD' }}</span>
+        </div>
+
+        <div class="d-flex justify-content-between mb-3">
+          <span>Delivery Fee</span>
+          <span>{{ deliveryFee | currency:'USD' }}</span>
+        </div>
+
+        <hr>
+
+        <div class="d-flex justify-content-between fw-bold fs-5 mb-3">
+          <span>Total</span>
+          <span>{{ total$ | async | currency:'USD' }}</span>
+        </div>
+
+        <!-- Promo Code -->
+        <div class="mb-3">
+          <label class="form-label mb-1">Promo code</label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter promo code" [(ngModel)]="promoCode">
+            <button class="btn btn-outline-primary" (click)="applyPromo()">Apply</button>
+          </div>
+          <small class="text-success" *ngIf="promoMessage && promoMessage.includes('applied')">{{ promoMessage }}</small>
+          <small class="text-danger" *ngIf="promoMessage && promoMessage.includes('Invalid')">{{ promoMessage }}</small>
+          <small class="text-muted d-block mt-2">Use code <strong>has2025</strong> for 20% off.</small>
+        </div>
+
+        <!-- Checkout Button -->
+        <button class="btn btn-dark w-100 fw-bold"(click)="clearCart()">Go to Checkout →</button>
+      </div>
+    </div>
+  </div>
+</div>

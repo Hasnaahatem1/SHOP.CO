@@ -1,0 +1,82 @@
+<section class="New Arrivals">
+  <div class="container mt-4">
+    <h2 class="my-5 h1 fw-bold text-center">Top selling</h2>
+    <div class="row">
+  <div class="col-md-3 mb-3" *ngFor="let product of products |slice:0:20">
+    <div class="card bg-transparent h-75">
+      <img [src]="product.image" alt="" class="w-100 h-50">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="text-muted mb-2">${{ product.price }}</p>
+
+        <!-- ⭐⭐⭐⭐ التقييم -->
+        <div class="d-flex align-items-center mb-2">
+          <ng-container *ngFor="let star of [1,2,3,4,5]">
+            <span class="me-1" [ngClass]="{
+              'text-warning': product.rating.rate >= star,
+              'text-secondary': product.rating.rate < star
+            }">
+              ★
+            </span>
+          </ng-container>
+
+          <small class="text-dark ms-2 fw-semibold">
+            {{ product.rating.rate }}/5
+          </small>
+        </div>
+
+        <!-- عدد الريفيو -->
+        <small class="text-muted mb-3">
+          ({{ product.rating.count }} reviews)
+        </small>
+
+        <!-- الأزرار تحت الريفيو وبعرض الكارت -->
+        <div class="mt-auto">
+          <button class="btn btn-dark btn-sm w-100 mb-2" (click)="addToCart(product)">
+            Add Cart
+          </button>
+          <button class="btn btn-outline-dark btn-sm w-100" (click)="gotoProductDetails(product.id)">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+<section class="reviews-section my-5">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold">OUR HAPPY CUSTOMERS</h2>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let chunk of chunkReviews(reviews, 4); let i = index" class="carousel-item" [class.active]="i===0">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let review of chunk">
+              <div class="card pb-5 h-75  px-2 shadow-sm review-card my-3">
+                <div class="d-flex align-items-center mb-2">
+                  <ng-container *ngFor="let star of [1,2,3,4,5]">
+                    <span [ngClass]="{
+                      'text-warning': review.rating >= star,
+                      'text-secondary': review.rating < star
+                    }">★</span>
+                  </ng-container>
+                </div>
+                <h5 class="fw-bold">{{ review.name }} <span class="text-success">✔️</span></h5>
+                <p class="text-muted">{{ review.text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"> > </span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"> < </span>
+      </button>
+    </div>
+  </div>
+</section>

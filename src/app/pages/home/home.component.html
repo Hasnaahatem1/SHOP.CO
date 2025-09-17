@@ -1,0 +1,178 @@
+<section class="hero-section text-dark d-flex align-items-center">
+  <div class="container">
+    <div class="hero-content text-start">
+      <h2 class="fw-bold me-5">FIND CLOTHES THAT MATCHES YOUR STYLE</h2>
+      <p class="mb-4">
+        Browse through our diverse range of meticulously crafted garments,
+        designed to bring out your individuality and cater to your sense of style.
+      </p>
+
+      <button class="btn btn-dark px-4 py-2 mb-4" routerLink="/product">Shop Now</button>
+
+      <!-- Stats Section -->
+      <div class="d-flex flex-column flex-md-row gap-4 stats">
+        <div>
+          <h3 class="fw-bold">200+</h3>
+          <p>Happy Customers</p>
+        </div>
+        <div>
+          <h3 class="fw-bold">2,000+</h3>
+          <p>High-Quality Products</p>
+        </div>
+        <div>
+          <h3 class="fw-bold">30,000+</h3>
+          <p>International Brands</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-black text-white w-100 p-4" id="#Brands">
+  <div class="container">
+    <ul class="brands-list d-flex justify-content-between flex-wrap gap-4 list-unstyled m-0">
+      <li class="fw-bold fs-4">Zara</li>
+      <li class="fw-bold fs-4">Gucci</li>
+      <li class="fw-bold fs-4">Adidas</li>
+      <li class="fw-bold fs-4">Nike</li>
+      <li class="fw-bold fs-4">H&M</li>
+    </ul>
+  </div>
+</section>
+<section class="New Arrivals">
+  <div class="container mt-4">
+    <h2 class="my-5 h1 fw-bold text-center">New Arrivals</h2>
+    <div class="row">
+      <div class="col-md-3 mb-3" *ngFor="let product of products | slice:0:4">
+        <div class="card  bg-transparent">
+          <img [src]="product.image" alt="" class="w-100 h-50">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="text-muted mb-2">
+              ${{ product.price }}
+            </p>
+
+            <!-- ⭐⭐⭐⭐ التقييم -->
+            <div class="d-flex align-items-center mb-2">
+              <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <span class="me-1" [ngClass]="{
+                  'text-warning': product.rating.rate >= star,
+                  'text-secondary': product.rating.rate < star
+                }">
+                  ★
+                </span>
+              </ng-container>
+
+              <!-- الرقم جنب النجوم -->
+              <small class="text-dark ms-2 fw-semibold">
+                {{ product.rating.rate }}/5
+              </small>
+            </div>
+
+            <small class="text-muted">
+              ({{ product.rating.count }} reviews)
+            </small>
+
+            <button class="btn btn-dark btn-sm w-100 mt-2"(click)="gotoProductDetails(product.id)">View Details</button>
+            <button class="btn btn-dark btn-sm w-100 mt-2" (click)="addToCart(product)">Add Cart</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- زرار عرض الكل -->
+    <div class="text-center mt-4">
+      <button (click)="gotoallproduct()" class="btn btn-outline-dark border-1 px-4 py-2 view">
+        View All
+      </button>
+    </div>
+  </div>
+</section>
+<section class="New Arrivals">
+  <div class="container mt-4">
+    <h2 class="my-5 h1 fw-bold text-center">Top Selling</h2>
+    <div class="row">
+      <div class="col-md-3 mb-3" *ngFor="let product of products | slice:20:24">
+        <div class="card  bg-transparent">
+          <img [src]="product.image" alt="" class="w-100 h-50">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="text-muted mb-2">
+              ${{ product.price }}
+            </p>
+
+            <!-- ⭐⭐⭐⭐ التقييم -->
+            <div class="d-flex align-items-center mb-2">
+              <ng-container *ngFor="let star of [1,2,3,4,5]">
+                <span class="me-1" [ngClass]="{
+                  'text-warning': product.rating.rate >= star,
+                  'text-secondary': product.rating.rate < star
+                }">
+                  ★
+                </span>
+              </ng-container>
+
+              <!-- الرقم جنب النجوم -->
+              <small class="text-dark ms-2 fw-semibold">
+                {{ product.rating.rate }}/5
+              </small>
+            </div>
+
+            <small class="text-muted">
+              ({{ product.rating.count }} reviews)
+            </small>
+
+            <button class="btn btn-dark btn-sm w-100 mt-2"(click)="gotoProductDetails(product.id)">View Details</button>
+            <button class="btn btn-dark btn-sm w-100 mt-2" (click)="addToCart(product)">Add Cart</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- زرار عرض الكل -->
+    <div class="text-center mt-4">
+      <button (click)="gotoallproduct()" class="btn btn-outline-dark border-1 px-4 py-2 view">
+        View All
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="reviews-section my-5">
+  <div class="container">
+    <h2 class="text-center mb-4 fw-bold">OUR HAPPY CUSTOMERS</h2>
+
+    <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let chunk of chunkReviews(reviews, 4); let i = index" class="carousel-item" [class.active]="i===0">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let review of chunk">
+              <div class="card pb-5 px-2 h-75   shadow-sm review-card my-3">
+                <div class="d-flex align-items-center mb-2">
+                  <ng-container *ngFor="let star of [1,2,3,4,5]">
+                    <span [ngClass]="{
+                      'text-warning': review.rating >= star,
+                      'text-secondary': review.rating < star
+                    }">★</span>
+                  </ng-container>
+                </div>
+                <h5 class="fw-bold">{{ review.name }} <span class="text-success">✔️</span></h5>
+                <p class="text-muted">{{ review.text }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"> > </span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"> < </span>
+      </button>
+    </div>
+  </div>
+</section>

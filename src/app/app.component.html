@@ -1,0 +1,11 @@
+<!-- Header يظهر فقط للصفحات العادية -->
+<header *ngIf="showHeaderFooter">
+  <app-header></app-header>
+</header>
+
+<router-outlet></router-outlet>
+
+<!-- Footer يظهر فقط للصفحات العادية -->
+<footer *ngIf="showHeaderFooter">
+  <app-footer></app-footer>
+</footer>

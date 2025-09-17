@@ -1,0 +1,86 @@
+<!-- Banner يظهر فقط لو المستخدم مش مسجل -->
+<div *ngIf="!isLoggedIn" class="bg-black text-light w-100 text-center py-2">
+  Sign up and get 20% off to your first order.
+  <a routerLink="/register" class="text-light fw-bold">Sign Up Now</a>
+</div>
+
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top bg-white">
+  <div class="container-fluid px-4">
+
+    <!-- Logo أو Home -->
+
+<a routerLink="/home" class="fw-bold fs-3 text-dark text-decoration-none">
+  SHOP<span class="text-warning">.CO</span>
+</a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links + Icons -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Links -->
+      <ul class="navbar-nav mx-auto fw-semibold">
+        <li class="nav-item dropdown px-2 "ngbDropdown>
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbDropdownToggle>
+            Shop
+          </a>
+          <ul class="dropdown-menu border-0 shadow-sm rounded-3" ngbDropdownMenu>
+            <li><a class="dropdown-item" routerLink="/men" >Men</a></li>
+            <li><a class="dropdown-item" routerLink="/Wamon" >Women</a></li>
+            <li><a class="dropdown-item" routerLink="/jewelery">jewelery</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item  fw-bold" routerLink="/product">All Products</a></li>
+          </ul>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link" routerLink="/topselling" >On Sale</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link" routerLink="/newarrivals"  >New Arrivals</a>
+        </li>
+        <li class="nav-item px-2" *ngIf="showHomeLink">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <form class="d-flex me-3 position-relative" role="search">
+        <input class="form-control rounded-pill ps-4 pe-5" type="search" placeholder="Search products..."
+          aria-label="Search">
+        <button class="btn position-absolute end-0 top-0 mt-1 me-2 text-secondary">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <!-- Icons -->
+      <ul class="navbar-nav d-flex flex-row">
+        <li class="nav-item ms-3 position-relative">
+            <a class="nav-link" routerLink="/cart">
+              <i class="fas fa-shopping-cart fs-5"></i>
+              <span *ngIf="cartCount > 0" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-warning">
+                {{ cartCount }}
+              </span>
+            </a>
+          </li>
+
+        <li class="nav-item ms-3 d-flex align-items-center">
+          <span *ngIf="isLoggedIn" class="me-2 text-warning fw-bold ">
+            <i class="fa fa-user"></i> Hi, {{ currentUser }}
+          </span>
+          <button *ngIf="isLoggedIn" (click)="logout()" class="btn btn-dark ms-2">Logout</button>
+          <a *ngIf="!isLoggedIn" routerLink="/login" class="nav-link">
+            <i class="fas fa-user-circle fs-5"></i>
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>

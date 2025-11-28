@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { UserauthService } from '../../../core/services/auth/userauth.service';
 import { CartServicesService } from '../../../core/services/cart/cart-services.service';
 import { IProduct } from '../../../Model/i-product';
+import { AuthService } from '../../../core/services/auth/userauth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,39 +15,41 @@ import { IProduct } from '../../../Model/i-product';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
-  currentUser: string | null = null; // ← نضيف هذا
+  currentUser: string | null = null;
   showHomeLink: boolean = false;
   cartCount: number = 0;
 
   private sub: Subscription = new Subscription();
 
   constructor(
-    private authService: UserauthService,
+    private authService: AuthService,
     private router: Router,
     private cartService: CartServicesService
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.getUserLogged();
-    this.currentUser = this.authService.getCurrentUser(); // ← نقرأ اسم المستخدم
+    // Initial login state
+    this.isLoggedIn = !!this.authService.getCurrentUser();
+    this.currentUser = this.authService.getCurrentUser()?.displayName ?? null;
 
+    // Subscribe to user changes
     this.sub.add(
-      this.authService.getAuthSubject().subscribe(status => {
-        this.isLoggedIn = status;
-        this.currentUser = this.authService.getCurrentUser(); // ← نحدّث اسم المستخدم عند أي تغيير
+      this.authService.getCurrentUserObservable().subscribe(user => {
+        this.isLoggedIn = !!user;
+        this.currentUser = user?.displayName ?? null;
       })
     );
 
-    // متابعة تغييرات الراوتر لتحديد ظهور Home link
+    // Subscribe to router events with type guard
     this.sub.add(
-      this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      this.router.events
+        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe(event => {
-          const navEnd = event as NavigationEnd;
-          this.showHomeLink = !(navEnd.urlAfterRedirects === '/' || navEnd.urlAfterRedirects === '/home');
+          this.showHomeLink = !(event.urlAfterRedirects === '/' || event.urlAfterRedirects === '/home');
         })
     );
 
-    // متابعة عدد المنتجات في الكارت
+    // Subscribe to cart
     this.sub.add(
       this.cartService.cart$.subscribe((cart: IProduct[]) => {
         this.cartCount = cart.length;
@@ -56,7 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   logout() {
-    this.authService.logOut();
+    this.authService.logout();
     this.router.navigate(['/']);
   }
 
@@ -64,4 +66,3 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 }
-

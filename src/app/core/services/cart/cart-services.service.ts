@@ -6,7 +6,7 @@ import { IProduct } from '../../../Model/i-product';
   providedIn: 'root'
 })
 export class CartServicesService {
-  private storageKey = 'cart';   // المفتاح لتخزين الكارت
+  private storageKey = 'cart';   
   private cartSubject: BehaviorSubject<IProduct[]> = new BehaviorSubject<IProduct[]>([]);
 
   constructor() {
@@ -14,26 +14,21 @@ export class CartServicesService {
     this.cartSubject = new BehaviorSubject<IProduct[]>(savedCart ? JSON.parse(savedCart) : []);
   }
 
-  // تخزين في LocalStorage
   private saveToStorage(cart: IProduct[]) {
     localStorage.setItem(this.storageKey, JSON.stringify(cart));
   }
 
-  // استرجاع الكارت كـ Observable
   getCart(): Observable<IProduct[]> {
     return this.cartSubject.asObservable();
   }
 
-  // إضافة منتج للكارت مع كمية
   addToCart(product: IProduct, quantity: number = 1) {
     const current = [...this.cartSubject.value];
     const existingIndex = current.findIndex(p => p.id === product.id);
 
     if (existingIndex > -1) {
-      // لو المنتج موجود، نزود الكمية
       current[existingIndex].quantity = (current[existingIndex].quantity || 1) + quantity;
     } else {
-      // المنتج جديد، نضيفه بالكمية
       current.push({ ...product, quantity });
     }
 
@@ -41,7 +36,6 @@ export class CartServicesService {
     this.saveToStorage(current);
   }
 
-  // إزالة منتج حسب index
   removeFromCart(index: number) {
     const arr = [...this.cartSubject.value];
     arr.splice(index, 1);
@@ -49,13 +43,11 @@ export class CartServicesService {
     this.saveToStorage(arr);
   }
 
-  // مسح الكارت بالكامل
   clearCart() {
     this.cartSubject.next([]);
     localStorage.removeItem(this.storageKey);
   }
 
-  // حساب إجمالي السعر
   getTotal(): Observable<number> {
     return this.cartSubject.asObservable().pipe(
       map(items => items.reduce((sum, it) => sum + (it.price || 0) * (it.quantity || 1), 0))

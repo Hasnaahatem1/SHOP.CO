@@ -8,55 +8,73 @@ import { IReview } from '../../Model/ireview';
 import { CartServicesService } from '../../core/services/cart/cart-services.service';
 
 @Component({
-
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-    reviews: IReview[] = [
-      { name: 'Sarah M.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 },
-      { name: 'Alex K.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 5 },
-      { name: 'James L.', text: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.", rating: 5 },
-      { name: 'Emily R.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 4 },
-      { name: 'Michael B.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 4 },
-      { name: 'Olivia S.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 5 },
-      { name: 'David K.', text: "Quick delivery and good packaging.", rating: 4 },
-      { name: 'Linda T.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 },
-      { name: 'Robert W.', text: "Great customer support and quality products.", rating: 4 },
-      { name: 'Sophia P.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 }
-    ];
+
+  product: IProduct | null = null; // Use null for safer checks
   selectedColor: string = 'red';
   selectedSize: string = 'M';
   quantity: number = 1;
-  product:any;
+
+  reviews: IReview[] = [
+    { name: 'Sarah M.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 },
+    { name: 'Alex K.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 5 },
+    { name: 'James L.', text: "As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.", rating: 5 },
+    { name: 'Emily R.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 4 },
+    { name: 'Michael B.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 4 },
+    { name: 'Olivia S.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.", rating: 5 },
+    { name: 'David K.', text: "Quick delivery and good packaging.", rating: 4 },
+    { name: 'Linda T.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 },
+    { name: 'Robert W.', text: "Great customer support and quality products.", rating: 4 },
+    { name: 'Sophia P.', text: "Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions", rating: 5 }
+  ];
 
   constructor(
-    private _ProductApiServicesService: ProductApiServicesService,
-    private _ActivatedRoute: ActivatedRoute,
-    private  _CartServicesService:CartServicesService
-  ) {
+    private productService: ProductApiServicesService,
+    private route: ActivatedRoute,
+    private cartService: CartServicesService
+  ) {}
+
+  ngOnInit(): void {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    const id = idParam ? Number(idParam) : null;
+
+    if (id === null) {
+      console.error('Product ID not found in URL');
+      return;
+    }
+
+    this.productService.getProductById(id).subscribe({
+      next: (data: IProduct | undefined) => {
+        if (data) {
+          this.product = data;
+        } else {
+          console.error('Product not found');
+        }
+      },
+      error: (err) => console.error('Error fetching product:', err)
+    });
   }
+
+  // Split reviews into chunks
   chunkReviews(arr: IReview[], chunkSize: number): IReview[][] {
-  const chunks: IReview[][] = [];
-  for (let i = 0; i < arr.length; i += chunkSize) {
-    chunks.push(arr.slice(i, i + chunkSize));
+    const chunks: IReview[][] = [];
+    for (let i = 0; i < arr.length; i += chunkSize) {
+      chunks.push(arr.slice(i, i + chunkSize));
+    }
+    return chunks;
   }
-  return chunks;
-}
 
-ngOnInit(): void {
-  const id = Number(this._ActivatedRoute.snapshot.paramMap.get('id'));
-  this._ProductApiServicesService.getProductById(id).subscribe(data => {
-    this.product = data;
-  });
-}
-addToCart(prod: IProduct, quantity: number) {
-  this._CartServicesService.addToCart(prod, quantity);
-}
-
-
-
+  addToCart(quantity: number = 1) {
+    if (!this.product) {
+      alert('Product not loaded yet!');
+      return;
+    }
+    this.cartService.addToCart(this.product, quantity);
+  }
 }

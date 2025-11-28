@@ -11,24 +11,24 @@ import { CartServicesService } from '../../core/services/cart/cart-services.serv
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './jewelery.component.html',
-  styleUrl: './jewelery.component.css'
+  styleUrls: ['./jewelery.component.css']
 })
 export class JeweleryComponent {
-products: IProduct[] = [];
-  filteredProducts: IProduct[] = [];
+  products: IProduct[] = [];
+  filteredProducts: IProduct[] = [];   
   Category = "jewelery";   
 
   constructor(
     private _ProductApiServicesService: ProductApiServicesService,
     private route: Router,
-    private cartService:CartServicesService    
+    private cartService: CartServicesService
   ) {}
 
   ngOnInit(): void {
     this._ProductApiServicesService.getAllProducts().subscribe({
       next: (data: IProduct[]) => {
         this.products = data;
-        this.filterProducts() // 👈 فلترة مباشرة
+        this.filterProducts(); // فلترة مباشرة عند التحميل
       },
       error: (err: any) => {
         alert(`Error fetching products: ${err}`);
@@ -45,11 +45,8 @@ products: IProduct[] = [];
   gotoProductDetails(id: number) {
     this.route.navigate(['details', id]);
   }
+
   addToCart(product: IProduct) {
     this.cartService.addToCart(product);
   }
 }
-
-
-
-

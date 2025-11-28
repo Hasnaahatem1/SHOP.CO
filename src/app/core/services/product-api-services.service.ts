@@ -11,12 +11,10 @@ export class ProductApiServicesService {
 
   constructor(private http: HttpClient) {}
 
-  // كل المنتجات
   getAllProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(this.UrlApi);
   }
 
-  // منتج واحد بالتفاصيل
   getProductById(id: number): Observable<IProduct | undefined> {
     return this.http.get<IProduct[]>(this.UrlApi).pipe(
       map(products => products.find(p => p.id === id))

@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartServicesService } from '../../core/services/cart/cart-services.service';
 import { HeaderComponent } from '../../shared/Components/header/header.component';
+import { AuthService } from '../../core/services/auth/userauth.service';
+import { FirebaseService } from '../../core/services/firebase-service.service';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [FormsModule, CommonModule,HeaderComponent],
+  imports: [FormsModule, CommonModule, HeaderComponent],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
@@ -18,43 +20,38 @@ export class ProductsComponent implements OnInit {
   products: IProduct[] = [];
   filterProducts: IProduct[] = [];
   selectedCategory = '';
-  priceRange: number = 500;   // default max price
+  priceRange: number = 500;   
   sortBy: string = "popular";
-
-  // الفئات اللي هتظهر في الفلتر
   categories = ["T-shirts", "Shirts", "Jeans", "Shorts", "Hoodies","Dress","Gold","Casual","Leather"];
+  searchTerm: string = '';
 
   constructor(
-    private _ProductApiServicesService: ProductApiServicesService,
+    private productService: ProductApiServicesService,
     private route: ActivatedRoute,
     private router: Router,
-    private cartService: CartServicesService
+    private cartService: CartServicesService,
+    private authService: AuthService,
+    private firebaseService: FirebaseService
   ) {}
 
   ngOnInit(): void {
-    this._ProductApiServicesService.getAllProducts().subscribe({
+    this.productService.getAllProducts().subscribe({
       next: (data: IProduct[]) => {
-        // أضف لكل منتج localCategory مبنية على العنوان
         this.products = data.map(p => ({
           ...p,
           localCategory: this.getCategoryFromTitle(p.title)
         }));
-
         this.filterProducts = this.products;
 
-        // اسمع للـ Route Params
         this.route.params.subscribe(params => {
           this.selectedCategory = params['category'] || '';
           this.applyFilter();
         });
       },
-      error: (err: any) => {
-        alert(`Error fetching products: ${err}`);
-      }
+      error: (err: any) => alert(`Error fetching products: ${err}`)
     });
   }
 
-  // استخراج الكاتيجوري من اسم المنتج
   getCategoryFromTitle(title: string): string {
     const lowerTitle = title.toLowerCase();
     if (lowerTitle.includes('t-shirt')) return 'T-shirts';
@@ -69,13 +66,7 @@ export class ProductsComponent implements OnInit {
     return 'Others';
   }
 
-  // فلترة حسب الكاتيجوري
-  filterByCategory(cat: string) {
-    this.selectedCategory = cat;
-    this.applyFilter();
-  }
-
-  // فلترة حسب المقاس (لو عندك size)
+  filterByCategory(cat: string) { this.selectedCategory = cat; this.applyFilter(); }
   filterBySize(size: number) {
     this.filterProducts = this.products.filter(p => {
       const matchCategory = this.selectedCategory ? p.localCategory === this.selectedCategory : true;
@@ -85,8 +76,6 @@ export class ProductsComponent implements OnInit {
     });
     this.applySorting();
   }
-
-  // تطبيق الفلاتر
   applyFilter() {
     this.filterProducts = this.products.filter(p => {
       const matchCategory = this.selectedCategory ? p.localCategory === this.selectedCategory : true;
@@ -95,28 +84,23 @@ export class ProductsComponent implements OnInit {
     });
     this.applySorting();
   }
-
-  // ترتيب المنتجات
   applySorting() {
-    if (this.sortBy === "low") {
-      this.filterProducts.sort((a, b) => a.price - b.price);
-    } else if (this.sortBy === "high") {
-      this.filterProducts.sort((a, b) => b.price - a.price);
-    } else {
-      this.filterProducts = [...this.filterProducts]; // default popular
-    }
+    if (this.sortBy === "low") this.filterProducts.sort((a,b)=>a.price-b.price);
+    else if (this.sortBy === "high") this.filterProducts.sort((a,b)=>b.price-a.price);
+    else this.filterProducts = [...this.filterProducts];
   }
+  gotoProductDetails(id: number) { this.router.navigate(['details', id]); }
 
-  // التنقل لتفاصيل المنتج
-  gotoProductDetails(id: number) {
-    this.router.navigate(['details', id]);
-  }
-
-  // إضافة للسلة
+  // إضافة المنتج للسلة + تسجيل حدث Firebase
   addToCart(product: IProduct) {
-    this.cartService.addToCart(product);
-  }
-    searchTerm: string = '';
+    const user = this.authService.getCurrentUser();
+    if (!user) {
+      alert('You must be logged in to add items to the cart.');
+      this.router.navigate(['/login']);
+      return;
+    }
 
- 
+    this.cartService.addToCart(product);
+    this.firebaseService.logEvent(user.uid, 'add_to_cart', { productId: product.id });
+  }
 }

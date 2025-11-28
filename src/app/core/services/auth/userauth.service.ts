@@ -1,57 +1,118 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { initializeApp } from 'firebase/app';
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  User,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup
+} from 'firebase/auth';
+import { getFirestore, setDoc, doc } from 'firebase/firestore';
+import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class UserauthService {
-  private AuthSubject: BehaviorSubject<boolean>;
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAFLApQ_ukuvUzSuwQd2FxYpFzTyXk6QNw",
+  authDomain: "ecommerce-shop-2d11a.firebaseapp.com",
+  projectId: "ecommerce-shop-2d11a",
+  storageBucket: "ecommerce-shop-2d11a.firebasestorage.app",
+  messagingSenderId: "453118184018",
+  appId: "1:453118184018:web:f9dd433575ab87bc322d8b",
+  measurementId: "G-9M793GQHF4"
+};
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private auth = getAuth(initializeApp(firebaseConfig));
+  private db = getFirestore();
+  private currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor() {
-    // نقرأ التوكن من localStorage عند إنشاء السيرفس
-    const logged = !!localStorage.getItem('token'); // true لو فيه توكن
-    this.AuthSubject = new BehaviorSubject<boolean>(logged);
+    // Monitor auth state changes
+    this.auth.onAuthStateChanged((user: User | null) => {
+      this.currentUser.next(user);
+    });
   }
 
-  // تحقق إذا اليوزر موجود
-  isUserExist(username: string): boolean {
-    const users = JSON.parse(localStorage.getItem('users') || '{}');
-    return !!users[username];
+  // Register a new user
+  async register(email: string, password: string, name: string) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const user = userCredential.user;
+
+      // Save user data in Firestore
+      await setDoc(doc(this.db, 'users', user.uid), {
+        email,
+        name,
+        createdAt: new Date()
+      });
+
+      return { success: true, user };
+    } catch (error: any) {
+      console.error('Firebase registration error:', error);
+      let message = 'An error occurred during registration';
+      if (error.code === 'auth/email-already-in-use') {
+        message = 'Email is already in use';
+      } else if (error.code === 'auth/invalid-email') {
+        message = 'Invalid email address';
+      } else if (error.code === 'auth/weak-password') {
+        message = 'Password is too weak';
+      }
+      return { success: false, message };
+    }
   }
 
-  // تسجيل مستخدم جديد
-  register(username: string, email: string, password: string) {
-    const users = JSON.parse(localStorage.getItem('users') || '{}');
-    users[username] = { email, password };
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('token', username); // نخزن التوكن
-    this.AuthSubject.next(true); // نحدّث الـBehaviorSubject
+  // Login user
+  async login(email: string, password: string) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      return { success: true, user: userCredential.user };
+    } catch (error: any) {
+      console.error('Firebase login error:', error);
+      return { success: false, message: 'Incorrect email or password' };
+    }
   }
 
-  // تسجيل الدخول
-  login(username: string) {
-    localStorage.setItem('token', username);
-    this.AuthSubject.next(true);
+  // Google Login
+  async signInWithGoogle() {
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(this.auth, provider);
+      return { success: true, user: result.user };
+    } catch (error: any) {
+      console.error('Google login error:', error);
+      return { success: false, message: 'Google login failed' };
+    }
   }
 
-  // تسجيل الخروج
-  logOut() {
-    localStorage.removeItem('token');
-    this.AuthSubject.next(false);
+  // Facebook Login
+  async signInWithFacebook() {
+    try {
+      const provider = new FacebookAuthProvider();
+      const result = await signInWithPopup(this.auth, provider);
+      return { success: true, user: result.user };
+    } catch (error: any) {
+      console.error('Facebook login error:', error);
+      return { success: false, message: 'Facebook login failed' };
+    }
   }
 
-  // هل المستخدم مسجل دخول؟
-  getUserLogged(): boolean {
-    return !!localStorage.getItem('token');
+  // Logout user
+  async logout() {
+    await signOut(this.auth);
+    this.currentUser.next(null);
   }
 
-  // observable لمتابعة حالة تسجيل الدخول
-  getAuthSubject(): BehaviorSubject<boolean> {
-    return this.AuthSubject;
+  // Get current user (synchronously)
+  getCurrentUser() {
+    return this.currentUser.value;
   }
 
-  // نقدر نجيب اسم المستخدم الحالي من التوكن
-  getCurrentUser(): string | null {
-    return localStorage.getItem('token');
+  // Observable to track user state
+  getCurrentUserObservable() {
+    return this.currentUser.asObservable();
   }
 }

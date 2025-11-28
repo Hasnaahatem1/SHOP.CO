@@ -1,79 +1,69 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { UserauthService } from '../../core/services/auth/userauth.service';
+import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../core/services/auth/userauth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   standalone: true,
+  imports: [FormsModule, CommonModule,RouterModule],
   selector: 'app-register',
-  imports: [FormsModule, CommonModule,RouterLink],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
-  username: string = '';
+export class RegisterComponent {
+  name: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  acceptTerms: boolean = false;
+  errorMessage: string = '';
 
-  usernameError: string = '';
-  emailError: string = '';
-  passwordError: string = '';
-  confirmPasswordError: string = '';
-  termsError: string = '';
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(private authService: UserauthService, private router: Router, private route: ActivatedRoute) {}
+  // تسجيل عبر Email/Password
+  async register() {
+    this.errorMessage = '';
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.username = params['username'] || '';
-    });
-  }
-
-  validate(): boolean {
-    let valid = true;
-    this.usernameError = '';
-    this.emailError = '';
-    this.passwordError = '';
-    this.confirmPasswordError = '';
-    this.termsError = '';
-
-    if (!this.username) {
-      this.usernameError = 'Username is required';
-      valid = false;
+    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
+      this.errorMessage = 'Please fill in all fields';
+      return;
     }
-    if (!this.email) {
-      this.emailError = 'Email is required';
-      valid = false;
-    } else if (!/^\S+@\S+\.\S+$/.test(this.email)) {
-      this.emailError = 'Email is invalid';
-      valid = false;
-    }
-    if (!this.password) {
-      this.passwordError = 'Password is required';
-      valid = false;
-    } else if (this.password.length < 6) {
-      this.passwordError = 'Password must be at least 6 characters';
-      valid = false;
-    }
+
     if (this.password !== this.confirmPassword) {
-      this.confirmPasswordError = 'Passwords do not match';
-      valid = false;
-    }
-    if (!this.acceptTerms) {
-      this.termsError = 'You must accept the terms';
-      valid = false;
+      this.errorMessage = 'Passwords do not match';
+      return;
     }
 
-    return valid;
+    try {
+      const result = await this.authService.register(this.email, this.password, this.name);
+
+      if (result.success && result.user) {
+        console.log('User registered:', result.user);
+        this.router.navigate(['/home']); // Redirect after registration
+      } else {
+        this.errorMessage = result.message || 'Registration failed. Please try again.';
+      }
+    } catch (err) {
+      console.error('Registration error:', err);
+      this.errorMessage = 'Something went wrong. Please try again.';
+    }
   }
 
-  register() {
-    if (!this.validate()) return;
-
-    this.authService.register(this.username, this.email, this.password);
-    this.router.navigate(['/']);
+  async loginWithGoogle() {
+    try {
+      const result = await this.authService.signInWithGoogle();
+      if (result.success) {
+        this.router.navigate(['/home']);
+      } else {
+        this.errorMessage = result.message || 'Google login failed';
+      }
+    } catch (err) {
+      console.error(err);
+      this.errorMessage = 'Google login error';
+    }
   }
+
+  
+  
 }

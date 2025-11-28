@@ -1,37 +1,37 @@
-<section class="container my-5">
+<section class="container my-5" *ngIf="product">
   <div class="row">
-    <!-- عمود الصور -->
+    <!-- Images column -->
     <div class="col-lg-6 d-flex">
-      <!-- الصور الصغيرة عمود على اليسار -->
+      <!-- Small images column -->
       <div class="d-flex flex-column me-3">
-        <img [src]="product?.image" alt="{{ product?.title }}" class=" mb-2" style="width:90px; height: 80px; object-fit: cover;">
-        <img [src]="product?.image" alt="{{ product?.title }}" class=" mb-2" style="width: 100px; height: 80px; object-fit: cover;">
-        <img [src]="product?.image" alt="{{ product?.title }}" class="" style="width: 110px; height: 80px; object-fit: cover;">
+        <img [src]="product.image" alt="{{ product.title }}" class="mb-2" style="width:90px; height: 80px; object-fit: cover;">
+        <img [src]="product.image" alt="{{ product.title }}" class="mb-2" style="width: 100px; height: 80px; object-fit: cover;">
+        <img [src]="product.image" alt="{{ product.title }}" class="" style="width: 110px; height: 80px; object-fit: cover;">
       </div>
 
-      <!-- الصورة الكبيرة -->
+      <!-- Large image -->
       <div class="flex-grow-1">
-        <img [src]="product?.image" alt="{{ product?.title }}" class=" w-100" style=" object-fit: cover;">
+        <img [src]="product.image" alt="{{ product.title }}" class="w-100" style="object-fit: cover;">
       </div>
     </div>
 
-    <!-- عمود التفاصيل -->
+    <!-- Details column -->
     <div class="col-lg-6">
-      <h2>{{ product?.title }}</h2>
-      <p class="h5">Price: <span class="text-success">{{ product?.price }} $</span></p>
-      <p>{{ product?.description }}</p>
+      <h2>{{ product.title }}</h2>
+      <p class="h5">Price: <span class="text-success">{{ product.price }} $</span></p>
+      <p>{{ product.description }}</p>
 
-      <!-- اختيار اللون -->
+      <!-- Color selection -->
       <div class="mb-3">
         <label for="colorSelect" class="form-label">Color:</label>
         <select id="colorSelect" class="form-select" [(ngModel)]="selectedColor">
-          <option value="red">White</option>
-          <option value="blue">Black</option>
-          <option value="green">Brown</option>
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
         </select>
       </div>
 
-      <!-- اختيار المقاس -->
+      <!-- Size selection -->
       <div class="mb-3">
         <label for="sizeSelect" class="form-label">Size:</label>
         <select id="sizeSelect" class="form-select" [(ngModel)]="selectedSize">
@@ -42,29 +42,28 @@
         </select>
       </div>
 
-      <!-- اختيار الكمية -->
+      <!-- Quantity -->
       <div class="mb-3">
         <label for="quantity" class="form-label">Quantity:</label>
         <input type="number" id="quantity" class="form-control" [(ngModel)]="quantity" min="1">
       </div>
 
-
-      <!-- زر إضافة للسلة -->
-      <button class="btn btn-primary mt-2" (click)="addToCart(product,quantity)">Add to Cart</button>
+      <!-- Add to Cart button -->
+      <button class="btn btn-primary mt-2" (click)="addToCart(quantity)">Add to Cart</button>
     </div>
   </div>
 </section>
 
 <section class="reviews-section my-5">
   <div class="container">
-    <h2 class="text-center mb-4 fw-bold">Review For This Product</h2>
+    <h2 class="text-center mb-4 fw-bold">Reviews For This Product</h2>
 
     <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div *ngFor="let chunk of chunkReviews(reviews, 4); let i = index" class="carousel-item" [class.active]="i===0">
           <div class="row">
             <div class="col-md-3" *ngFor="let review of chunk">
-              <div class="card pb-5 px-2 h-75   shadow-sm review-card my-3">
+              <div class="card pb-5 px-2 h-75 shadow-sm review-card my-3">
                 <div class="d-flex align-items-center mb-2">
                   <ng-container *ngFor="let star of [1,2,3,4,5]">
                     <span [ngClass]="{

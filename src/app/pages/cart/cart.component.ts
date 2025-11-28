@@ -4,8 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { CartServicesService } from '../../core/services/cart/cart-services.service';
 import { IProduct } from '../../Model/i-product';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FirebaseService } from '../../core/services/firebase-service.service';
+import { AuthService } from './../../core/services/auth/userauth.service';
 
 @Component({
   selector: 'app-cart',
@@ -27,7 +29,12 @@ export class CartComponent {
 
   deliveryFee = 15; // ثابت مثال
 
-  constructor(private cartService: CartServicesService,private router:Router) {
+  constructor(
+    private cartService: CartServicesService,
+    private router: Router,
+    private firebaseService: FirebaseService,
+    private authService: AuthService
+  ) {
     this.cart$ = this.cartService.getCart();
 
     // subtotal (من service)
@@ -44,59 +51,85 @@ export class CartComponent {
     );
   }
 
-  // إضافة/نقص كمية (يفترض أن service عندها هذان الميتودان)
+  // إعادة تعيين البرومو إذا الكارت فاضي
+  private resetPromoIfEmpty() {
+    this.cart$.pipe(take(1)).subscribe(cart => {
+      if (!cart || cart.length === 0) {
+        this.promoPercent$.next(0);
+        this.promoCode = '';
+        this.promoMessage = null;
+      }
+    });
+  }
+
+  // زيادة كمية
   increaseQty(index: number) {
-    this.cartService.increaseQty(index);
+    this.cart$.pipe(take(1)).subscribe(cart => {
+      const product = cart[index];
+      const user = this.authService.getCurrentUser();
+      if (product && user) {
+        this.cartService.increaseQty(index);
+        this.firebaseService.logEvent(user.uid, 'increase_qty', { productId: product.id });
+      }
+    });
   }
 
+  // نقص كمية
   decreaseQty(index: number) {
-    this.cartService.decreaseQty(index);
+    this.cart$.pipe(take(1)).subscribe(cart => {
+      const product = cart[index];
+      const user = this.authService.getCurrentUser();
+      if (product && user) {
+        this.cartService.decreaseQty(index);
+        this.firebaseService.logEvent(user.uid, 'decrease_qty', { productId: product.id });
+      }
+    });
   }
 
+  // إزالة منتج
   removeItem(index: number) {
-    this.cartService.removeFromCart(index);
-    // لو حبيت تلغي البرومو عند تفريغ الكارت مثلاً:
+    this.cart$.pipe(take(1)).subscribe(cart => {
+      const product = cart[index];
+      const user = this.authService.getCurrentUser();
+      if (product && user) {
+        this.cartService.removeFromCart(index);
+        this.firebaseService.logEvent(user.uid, 'remove_item', { productId: product.id });
+      }
+    });
     this.resetPromoIfEmpty();
   }
 
+  // تفريغ الكارت
   clearCart() {
     this.router.navigateByUrl('/checkout');
     this.cartService.clearCart();
-    // بعد التفريغ ننظف الكوبون
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      this.firebaseService.logEvent(user.uid, 'clear_cart', {});
+    }
     this.promoPercent$.next(0);
     this.promoCode = '';
     this.promoMessage = null;
   }
 
-  // يطبق البرومو كود
+  // تطبيق البرومو كود
   applyPromo() {
     const code = (this.promoCode || '').trim();
+    const user = this.authService.getCurrentUser();
     if (!code) {
       this.promoMessage = 'Please enter a promo code.';
       this.promoPercent$.next(0);
       return;
     }
 
-    // هنا نتحقق من الكود المطلوب
     if (code.toLowerCase() === 'has2025') {
-      // خصم 20%
       this.promoPercent$.next(0.20);
       this.promoMessage = 'Promo applied — 20% discount ✔️';
+      if (user) this.firebaseService.logEvent(user.uid, 'apply_promo', { code });
     } else {
       this.promoPercent$.next(0);
       this.promoMessage = 'Invalid promo code ❌';
+      if (user) this.firebaseService.logEvent(user.uid, 'apply_promo_failed', { code });
     }
   }
-
-  // لو الكارت بقى فاضي نلغي البرومو (اختياري)
-  private resetPromoIfEmpty() {
-    this.cart$.subscribe(cart => {
-      if (!cart || cart.length === 0) {
-        this.promoPercent$.next(0);
-        this.promoCode = '';
-        this.promoMessage = null;
-      }
-    }).unsubscribe();
-  }
-
 }

@@ -5,7 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartServicesService } from '../../core/services/cart/cart-services.service';
-
+import { AuthService } from '../../core/services/auth/userauth.service';
+import { FirebaseService } from '../../core/services/firebase-service.service';
 @Component({
   selector: 'app-wamen',
   standalone: true,
@@ -19,13 +20,15 @@ export class WamenComponent {
   Category = "women's clothing";   // 👈 دي الكاتيجوري اللي الصفحة دي بتعرضها
 
   constructor(
-    private _ProductApiServicesService: ProductApiServicesService,
-    private route: Router,
-    private cartService:CartServicesService
+    private productService: ProductApiServicesService,
+    private router: Router,
+    private cartService: CartServicesService,
+    private authService: AuthService,
+    private firebaseService: FirebaseService
   ) {}
 
   ngOnInit(): void {
-    this._ProductApiServicesService.getAllProducts().subscribe({
+    this.productService.getAllProducts().subscribe({
       next: (data: IProduct[]) => {
         this.products = data;
         this.filterProducts() // 👈 فلترة مباشرة
@@ -43,9 +46,16 @@ export class WamenComponent {
   }
 
   gotoProductDetails(id: number) {
-    this.route.navigate(['details', id]);
+    this.router.navigate(['details', id]);
   }
-  addToCart(product: IProduct) {
+ addToCart(product: IProduct) {
+    const user = this.authService.getCurrentUser();
+    if (!user) {
+      alert('You must be logged in to add items to the cart.');
+      this.router.navigate(['/login']);
+      return;
+    }
     this.cartService.addToCart(product);
+    this.firebaseService.logEvent(user.uid, 'add_to_cart', { productId: product.id });
   }
 }

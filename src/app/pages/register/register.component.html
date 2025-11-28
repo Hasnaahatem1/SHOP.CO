@@ -1,55 +1,45 @@
-<div class="container my-3 register-page d-flex justify-content-center align-items-center vh-100">
-  <div class="p-4 shadow register-card">
+<div class="container my-3 d-flex justify-content-center align-items-center vh-100">
+  <div class="register-card shadow p-4">
     <h3 class="text-center mb-4 fw-bold">Create Account</h3>
 
     <form (ngSubmit)="register()">
-
-      <!-- Username -->
       <div class="mb-3">
-        <label class="form-label">Username</label>
-        <input type="text" class="form-control" [(ngModel)]="username" name="username" placeholder="Enter your username">
-        <div *ngIf="usernameError" class="text-danger mt-1">{{ usernameError }}</div>
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" [(ngModel)]="name" name="name" placeholder="Enter your name" required>
       </div>
 
-      <!-- Email -->
       <div class="mb-3">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter your email">
-        <div *ngIf="emailError" class="text-danger mt-1">{{ emailError }}</div>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" placeholder="Enter your email" required>
       </div>
 
-      <!-- Password -->
-      <div class="mb-3 position-relative">
+      <div class="mb-3">
         <label class="form-label">Password</label>
-        <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Enter password">
-        <div *ngIf="passwordError" class="text-danger mt-1">{{ passwordError }}</div>
+        <input type="password" class="form-control" [(ngModel)]="password" name="password" placeholder="Enter password" required>
       </div>
 
-      <!-- Confirm Password -->
       <div class="mb-3">
         <label class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm password">
-        <div *ngIf="confirmPasswordError" class="text-danger mt-1">{{ confirmPasswordError }}</div>
+        <input type="password" class="form-control" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
       </div>
 
-      <!-- Terms & Conditions -->
-      <div class="form-check mb-4">
-        <input class="form-check-input" type="checkbox" [(ngModel)]="acceptTerms" name="acceptTerms" id="termsCheck">
-        <label class="form-check-label" for="termsCheck">
-          I accept the
-          <a routerLink="/terms" class="text-decoration-underline">Terms & Conditions</a>
-        </label>
-        <div *ngIf="termsError" class="text-danger mt-1">{{ termsError }}</div>
-      </div>
+      <div *ngIf="errorMessage" class="text-danger mb-3">{{ errorMessage }}</div>
 
-      <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">Register</button>
-
-      <!-- Login Link -->
-      <p class="text-center mt-3 text-muted">
-        Already have an account? <a routerLink="/login">Login</a>
-      </p>
-
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold" [routerLink]="['/home']">Register</button>
     </form>
+
+    <div class="text-center mt-3">
+      <p class="text-muted">Or sign up with:</p>
+      <button type="button" class="btn btn-outline-warning me-2 w-100" (click)="loginWithGoogle()">
+  <i class="fab fa-google me-2"></i> Google
+</button>
+
+      
+    </div>
+
+    <p class="text-center mt-3 text-muted">
+      Already have an account? <a [routerLink]="['/login']">Login</a>
+
+    </p>
   </div>
 </div>

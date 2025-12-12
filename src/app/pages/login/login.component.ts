@@ -13,12 +13,27 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   email: string = '';
   password: string = '';
-  errorMessage: string = ''; 
+  errorMessage: string = '';
+  adminCode: string = '';
+  isAdminLogin: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
+
+  loginAdmin() {
+    if (this.authService.loginAsAdmin(this.adminCode)) {
+      this.router.navigate(['/']);
+    } else {
+      this.errorMessage = 'Invalid Admin Code';
+    }
+  }
 
   async login() {
     this.errorMessage = '';
+
+    if (this.isAdminLogin) {
+      this.loginAdmin();
+      return;
+    }
 
     if (!this.email || !this.password) {
       this.errorMessage = 'Please fill all fields';
@@ -30,7 +45,6 @@ export class LoginComponent {
     if (result.success) {
       this.router.navigate(['/']);
     } else {
-      // إذا الحساب غير موجود أو البريد/كلمة المرور خطأ
       this.errorMessage = result.message || 'Account not found';
     }
   }

@@ -1,30 +1,34 @@
-<section class="container my-5" *ngIf="product">
-  <div class="row">
+<section class="container my-3 my-md-5" *ngIf="product">
+  <div class="row g-4">
     <!-- Images column -->
-    <div class="col-lg-6 d-flex">
-      <!-- Small images column -->
-      <div class="d-flex flex-column me-3">
-        <img [src]="product.image" alt="{{ product.title }}" class="mb-2" style="width:90px; height: 80px; object-fit: cover;">
-        <img [src]="product.image" alt="{{ product.title }}" class="mb-2" style="width: 100px; height: 80px; object-fit: cover;">
-        <img [src]="product.image" alt="{{ product.title }}" class="" style="width: 110px; height: 80px; object-fit: cover;">
+    <div class="col-md-6 d-flex flex-column flex-md-row">
+      <!-- Large image (Order 1 for mobile) -->
+      <div class="flex-grow-1 order-1 order-md-2 mb-3 mb-md-0">
+        <img [src]="product.image" alt="{{ product.title }}" class="w-100 rounded shadow-sm"
+          style="object-fit: contain; max-height: 500px;">
       </div>
 
-      <!-- Large image -->
-      <div class="flex-grow-1">
-        <img [src]="product.image" alt="{{ product.title }}" class="w-100" style="object-fit: cover;">
+      <!-- Small images column (Order 2 for mobile) -->
+      <div class="d-flex flex-row flex-md-column me-md-3 order-2 order-md-1 justify-content-center">
+        <img [src]="product.image" alt="{{ product.title }}" class="mb-2 me-2 me-md-0 rounded border cursor-pointer"
+          style="width:70px; height: 70px; object-fit: contain;">
+        <img [src]="product.image" alt="{{ product.title }}" class="mb-2 me-2 me-md-0 rounded border cursor-pointer"
+          style="width: 70px; height: 70px; object-fit: contain;">
+        <img [src]="product.image" alt="{{ product.title }}" class="mb-2 me-md-0 rounded border cursor-pointer"
+          style="width: 70px; height: 70px; object-fit: contain;">
       </div>
     </div>
 
     <!-- Details column -->
-    <div class="col-lg-6">
-      <h2>{{ product.title }}</h2>
-      <p class="h5">Price: <span class="text-success">{{ product.price }} $</span></p>
-      <p>{{ product.description }}</p>
+    <div class="col-md-6">
+      <h2 class="fw-bold mb-3" style="font-size: 1.5rem; word-break: break-word;">{{ product.title }}</h2>
+      <p class="h4 mb-3">Price: <span class="text-success fw-bold">{{ product.price }} $</span></p>
+      <p class="text-muted mb-4" style="font-size: 0.95rem; line-height: 1.6;">{{ product.description }}</p>
 
       <!-- Color selection -->
       <div class="mb-3">
-        <label for="colorSelect" class="form-label">Color:</label>
-        <select id="colorSelect" class="form-select" [(ngModel)]="selectedColor">
+        <label for="colorSelect" class="form-label fw-semibold">Color:</label>
+        <select id="colorSelect" class="form-select w-100" [(ngModel)]="selectedColor">
           <option value="red">Red</option>
           <option value="blue">Blue</option>
           <option value="green">Green</option>
@@ -33,8 +37,8 @@
 
       <!-- Size selection -->
       <div class="mb-3">
-        <label for="sizeSelect" class="form-label">Size:</label>
-        <select id="sizeSelect" class="form-select" [(ngModel)]="selectedSize">
+        <label for="sizeSelect" class="form-label fw-semibold">Size:</label>
+        <select id="sizeSelect" class="form-select w-100" [(ngModel)]="selectedSize">
           <option value="S">S</option>
           <option value="M">M</option>
           <option value="L">L</option>
@@ -43,20 +47,22 @@
       </div>
 
       <!-- Quantity -->
-      <div class="mb-3">
-        <label for="quantity" class="form-label">Quantity:</label>
+      <div class="mb-4">
+        <label for="quantity" class="form-label fw-semibold">Quantity:</label>
         <input type="number" id="quantity" class="form-control" [(ngModel)]="quantity" min="1">
       </div>
 
       <!-- Add to Cart button -->
-      <button class="btn btn-primary mt-2" (click)="addToCart(quantity)">Add to Cart</button>
+      <button class="btn btn-primary w-100 py-2 fw-bold" (click)="addToCart(quantity)">
+        <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+      </button>
     </div>
   </div>
 </section>
 
-<section class="reviews-section my-5">
+<section class="reviews-section my-5 bg-light py-4">
   <div class="container">
-    <h2 class="text-center mb-4 fw-bold">Reviews For This Product</h2>
+    <h3 class="text-center mb-4 fw-bold">Customer Reviews</h3>
 
     <div id="reviewCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -85,7 +91,8 @@
         <span class="carousel-control-prev-icon"> > </span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon"> < </span>
+        <span class="carousel-control-next-icon">
+          < </span>
       </button>
     </div>
   </div>

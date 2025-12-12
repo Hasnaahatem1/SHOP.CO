@@ -3,15 +3,25 @@
     <h3 class="text-center mb-3">Login</h3>
 
     <form (ngSubmit)="login()">
-      
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+
+      <div *ngIf="!isAdminLogin">
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="email" name="email" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+        </div>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input type="password" class="form-control" [(ngModel)]="password" name="password" required>
+      <div *ngIf="isAdminLogin">
+        <div class="mb-3">
+          <label class="form-label">Admin Code</label>
+          <input type="password" class="form-control" [(ngModel)]="adminCode" name="adminCode"
+            placeholder="Enter Admin Code" required>
+        </div>
       </div>
 
       <div *ngIf="errorMessage" class="text-danger mb-3">
@@ -20,16 +30,24 @@
 
       <button type="submit" class="btn btn-dark w-100 mb-2">Login</button>
       <div class="text-center mt-3">
-      <p class="text-muted">Or Log in with:</p>
-      <button class="btn btn-outline-warning me-2 w-100" (click)="loginWithGoogle()">
-      <i class="fab fa-google me-2"></i> Google
-      </button>
-      
-    </div>
+        <p class="text-muted">Or Log in with:</p>
+        <button class="btn btn-outline-warning me-2 w-100" (click)="loginWithGoogle()">
+          <i class="fab fa-google me-2"></i> Google
+        </button>
+
+      </div>
       <!-- زر التسجيل يظهر فقط إذا كان هناك خطأ -->
-      <button *ngIf="errorMessage" type="button" class="btn btn-dark w-100 mb-2 mt-lg-4" (click)="goToRegister()">
+      <button *ngIf="errorMessage && !isAdminLogin" type="button" class="btn btn-dark w-100 mb-2 mt-lg-4"
+        (click)="goToRegister()">
         Register
       </button>
+
+      <div class="text-center mt-2">
+        <a class="text-decoration-none text-secondary" style="cursor: pointer;"
+          (click)="isAdminLogin = !isAdminLogin; errorMessage = ''">
+          {{ isAdminLogin ? 'Back to User Login' : 'Login as Admin' }}
+        </a>
+      </div>
 
 
     </form>

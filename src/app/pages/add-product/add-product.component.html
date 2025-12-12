@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <h2>Add New Product</h2>
+    <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" required [(ngModel)]="newProduct.title" name="title">
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" required [(ngModel)]="newProduct.price" name="price">
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" [(ngModel)]="newProduct.category" name="category">
+                <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" rows="3" [(ngModel)]="newProduct.description"
+                name="description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" class="form-control" id="image" [(ngModel)]="newProduct.image" name="image">
+        </div>
+
+        <div class="mb-3" *ngIf="newProduct.image">
+            <label>Preview:</label> <br>
+            <img [src]="newProduct.image" alt="Product Preview" style="max-height: 150px;">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!productForm.form.valid">Add Product</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+    </form>
+</div>

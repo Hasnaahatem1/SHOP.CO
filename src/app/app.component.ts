@@ -4,6 +4,7 @@ import { HeaderComponent } from './shared/Components/header/header.component';
 import { FooterComponent } from './shared/Components/Footer/footer/footer.component';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -17,9 +18,9 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        // نخفي الهيدر والفوتر على صفحات register و login
-        this.showHeaderFooter = !(event.urlAfterRedirects.includes('/register') || event.urlAfterRedirects.includes('/login'));
+        this.showHeaderFooter = !(event.urlAfterRedirects.includes('/register') || event.urlAfterRedirects.includes('/login') || event.urlAfterRedirects.includes('/checkout'));
       }
     });
+
   }
 }

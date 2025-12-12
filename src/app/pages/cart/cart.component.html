@@ -5,19 +5,17 @@
       <h2 class="fw-bold mb-4">Your Cart</h2>
 
       <div *ngIf="cart$ | async as cart; else empty">
-        <div *ngFor="let item of cart; let i = index" 
-             class="position-relative border rounded p-3 mb-3 shadow-sm">
+        <div *ngFor="let item of cart; let i = index" class="position-relative border rounded p-3 mb-3 shadow-sm">
 
           <!-- Delete Icon -->
-          <button class="btn btn-link text-danger position-absolute top-0 end-0 m-2 fs-5"
-                  (click)="removeItem(i)">
-          <i class="fa-solid fa-trash"></i>
+          <button class="btn btn-link text-danger position-absolute top-0 end-0 m-2 fs-5" (click)="removeItem(i)">
+            <i class="fa-solid fa-trash"></i>
           </button>
 
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-              <img [src]="item.image" alt="{{item.title}}"
-                   class="rounded me-3" style="width: 120px;  object-fit: cover;">
+              <img [src]="item.image" alt="{{item.title}}" class="rounded me-3"
+                style="width: 120px;  object-fit: cover;">
               <div>
                 <h5 class="mb-1">{{ item.title }}</h5>
                 <p class="text-muted mb-1" style="max-width: 380px; overflow: hidden; text-overflow: ellipsis;">
@@ -77,13 +75,14 @@
             <input type="text" class="form-control" placeholder="Enter promo code" [(ngModel)]="promoCode">
             <button class="btn btn-outline-primary" (click)="applyPromo()">Apply</button>
           </div>
-          <small class="text-success" *ngIf="promoMessage && promoMessage.includes('applied')">{{ promoMessage }}</small>
+          <small class="text-success" *ngIf="promoMessage && promoMessage.includes('applied')">{{ promoMessage
+            }}</small>
           <small class="text-danger" *ngIf="promoMessage && promoMessage.includes('Invalid')">{{ promoMessage }}</small>
           <small class="text-muted d-block mt-2">Use code <strong>has2025</strong> for 20% off.</small>
         </div>
 
         <!-- Checkout Button -->
-        <button class="btn btn-dark w-100 fw-bold"(click)="clearCart()">Go to Checkout →</button>
+        <button class="btn btn-dark w-100 fw-bold" (click)="goToCheckout()">Go to Checkout →</button>
       </div>
     </div>
   </div>

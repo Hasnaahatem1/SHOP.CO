@@ -1,38 +1,26 @@
 import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
+
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
   User,
   GoogleAuthProvider,
   FacebookAuthProvider,
   signInWithPopup
 } from 'firebase/auth';
-import { getFirestore, setDoc, doc } from 'firebase/firestore';
+import { setDoc, doc } from 'firebase/firestore';
 import { BehaviorSubject } from 'rxjs';
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyAFLApQ_ukuvUzSuwQd2FxYpFzTyXk6QNw",
-  authDomain: "ecommerce-shop-2d11a.firebaseapp.com",
-  projectId: "ecommerce-shop-2d11a",
-  storageBucket: "ecommerce-shop-2d11a.firebasestorage.app",
-  messagingSenderId: "453118184018",
-  appId: "1:453118184018:web:f9dd433575ab87bc322d8b",
-  measurementId: "G-9M793GQHF4"
-};
+import { auth, db } from '../../../firebase-config'; // Import centralized instances
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private auth = getAuth(initializeApp(firebaseConfig));
-  private db = getFirestore();
   private currentUser: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  isAdmin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor() {
-    // Monitor auth state changes
-    this.auth.onAuthStateChanged((user: User | null) => {
+    // Monitor auth state changes uses the imported 'auth' instance directly
+    auth.onAuthStateChanged((user: User | null) => {
       this.currentUser.next(user);
     });
   }
@@ -40,11 +28,11 @@ export class AuthService {
   // Register a new user
   async register(email: string, password: string, name: string) {
     try {
-      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       // Save user data in Firestore
-      await setDoc(doc(this.db, 'users', user.uid), {
+      await setDoc(doc(db, 'users', user.uid), {
         email,
         name,
         createdAt: new Date()
@@ -68,7 +56,7 @@ export class AuthService {
   // Login user
   async login(email: string, password: string) {
     try {
-      const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       return { success: true, user: userCredential.user };
     } catch (error: any) {
       console.error('Firebase login error:', error);
@@ -80,7 +68,7 @@ export class AuthService {
   async signInWithGoogle() {
     try {
       const provider = new GoogleAuthProvider();
-      const result = await signInWithPopup(this.auth, provider);
+      const result = await signInWithPopup(auth, provider);
       return { success: true, user: result.user };
     } catch (error: any) {
       console.error('Google login error:', error);
@@ -92,7 +80,7 @@ export class AuthService {
   async signInWithFacebook() {
     try {
       const provider = new FacebookAuthProvider();
-      const result = await signInWithPopup(this.auth, provider);
+      const result = await signInWithPopup(auth, provider);
       return { success: true, user: result.user };
     } catch (error: any) {
       console.error('Facebook login error:', error);
@@ -102,8 +90,17 @@ export class AuthService {
 
   // Logout user
   async logout() {
-    await signOut(this.auth);
+    await signOut(auth);
     this.currentUser.next(null);
+    this.isAdmin.next(false);
+  }
+
+  loginAsAdmin(code: string): boolean {
+    if (code === 'Admin') {
+      this.isAdmin.next(true);
+      return true;
+    }
+    return false;
   }
 
   // Get current user (synchronously)

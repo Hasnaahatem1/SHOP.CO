@@ -1,0 +1,27 @@
+.checkout-page {
+  min-height: calc(100vh - 120px); /* يحمي الفوتر */
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.list-group-item {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.list-group-item:hover {
+  background: #f8f9fa;
+}
+
+input.form-control {
+  border-radius: 8px;
+}
+
+.text-danger {
+  font-size: 13px;
+  margin-top: 3px;
+}

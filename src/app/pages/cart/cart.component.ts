@@ -101,7 +101,6 @@ export class CartComponent {
 
   // تفريغ الكارت
   clearCart() {
-    this.router.navigateByUrl('/checkout');
     this.cartService.clearCart();
     const user = this.authService.getCurrentUser();
     if (user) {
@@ -110,6 +109,10 @@ export class CartComponent {
     this.promoPercent$.next(0);
     this.promoCode = '';
     this.promoMessage = null;
+  }
+
+  goToCheckout() {
+    this.router.navigateByUrl('/checkout');
   }
 
   // تطبيق البرومو كود

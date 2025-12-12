@@ -15,23 +15,23 @@ import { RegisterComponent } from './pages/register/register.component';
 import { TermsComponent } from './pages/terms/terms.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'details/:id', component: DetailsComponent,canActivate:[authGuard]},
+  { path: 'details/:id', component: DetailsComponent },
   { path: 'newarrivals', component: NewArrivalsComponent },
-  {path:'topselling',component:TopsellingComponent},
-  {path:'cart',component:CartComponent,canActivate:[authGuard]},
-  {path:'product',component:ProductsComponent},
-  {path:'men',component:MenClothesComponent},
-  {path:'Wamon',component:WamenComponent},
-  {path:'jewelery',component:JeweleryComponent},
-  {path:'login',component:LoginComponent},
-  {path:'register',component:RegisterComponent},
+  { path: 'topselling', component: TopsellingComponent },
+  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+  { path: 'product', component: ProductsComponent },
+  { path: 'men', component: MenClothesComponent },
+  { path: 'Wamon', component: WamenComponent },
+  { path: 'jewelery', component: JeweleryComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'terms', component: TermsComponent },
-  {path:'checkout',component:CheckoutComponent},
-  {path:'**',component:NotFoundComponent}
-
-
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'add-product', component: AddProductComponent },
+  { path: '**', component: NotFoundComponent }
 ];

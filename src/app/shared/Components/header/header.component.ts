@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd, RouterLink } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
@@ -9,7 +10,7 @@ import { AuthService } from '../../../core/services/auth/userauth.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
@@ -17,7 +18,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   currentUser: string | null = null;
   showHomeLink: boolean = false;
+
   cartCount: number = 0;
+  searchTerm: string = '';
+
+  search() {
+    if (this.searchTerm.trim()) {
+      this.router.navigate(['/product'], { queryParams: { search: this.searchTerm } });
+    } else {
+      this.router.navigate(['/product']);
+    }
+  }
 
   private sub: Subscription = new Subscription();
 
@@ -25,7 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private cartService: CartServicesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     // Initial login state
@@ -49,10 +60,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
         })
     );
 
-    // Subscribe to cart
+    // Subscribe to cart count
     this.sub.add(
-      this.cartService.cart$.subscribe((cart: IProduct[]) => {
-        this.cartCount = cart.length;
+      this.cartService.getCount().subscribe(count => {
+        this.cartCount = count;
       })
     );
   }

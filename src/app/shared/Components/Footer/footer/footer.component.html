@@ -3,9 +3,10 @@
   <div class="newsletter">
     <h2>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
     <div class="subscribe">
-      <input type="email" placeholder="Enter your email address">
-      <button>Subscribe to Newsletter</button>
+    <input type="email" placeholder="Enter your email address" [(ngModel)]="email">
+    <button (click)="subscribe()">Subscribe to Newsletter</button>
     </div>
+
   </div>
 
   <div class="footer-content">

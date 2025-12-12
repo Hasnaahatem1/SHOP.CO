@@ -38,11 +38,12 @@ export class DetailsComponent implements OnInit {
     private productService: ProductApiServicesService,
     private route: ActivatedRoute,
     private cartService: CartServicesService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
-    const id = idParam ? Number(idParam) : null;
+    const id = idParam; // Keep as string, let service handle type coercion if needed, or parse if it looks like a number
+
 
     if (id === null) {
       console.error('Product ID not found in URL');
@@ -51,13 +52,17 @@ export class DetailsComponent implements OnInit {
 
     this.productService.getProductById(id).subscribe({
       next: (data: IProduct | undefined) => {
+        console.log('Product details fetched:', data);
         if (data) {
           this.product = data;
         } else {
-          console.error('Product not found');
+          console.error('Product not found for ID:', id);
         }
       },
-      error: (err) => console.error('Error fetching product:', err)
+      error: (err) => {
+        console.error('Error fetching product details:', err);
+        alert('Error loading product details');
+      }
     });
   }
 

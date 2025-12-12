@@ -1,3 +1,116 @@
-<h3 class="fw-bold fs-1 text-success text-center d-flex justify-content-center align-items-center m-5 p-5">
-  The Process Is Successful
-</h3>
+<div class="checkout-page container">
+
+  <div class="row g-4 justify-content-center">
+
+    <!-- LEFT SIDE -->
+    <div class="col-lg-7 col-md-10">
+      <div class="card shadow-sm border-0 p-4 h-100">
+
+        <h3 class="fw-bold text-center mb-4">Checkout</h3>
+
+        <!-- Customer Info -->
+        <h5 class="fw-semibold mb-3">Customer Information</h5>
+
+        <div class="row g-3 p-3 m-3 h-100">
+
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" [(ngModel)]="customer.name" class="form-control shadow-sm" />
+            <div *ngIf="errors.name" class="text-danger small">{{ errors.name }}</div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" [(ngModel)]="customer.email" class="form-control shadow-sm" />
+            <div *ngIf="errors.email" class="text-danger small">{{ errors.email }}</div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input type="text" [(ngModel)]="customer.phone" class="form-control shadow-sm" />
+            <div *ngIf="errors.phone" class="text-danger small">{{ errors.phone }}</div>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">City</label>
+            <input type="text" [(ngModel)]="customer.city" class="form-control shadow-sm" />
+            <div *ngIf="errors.city" class="text-danger small">{{ errors.city }}</div>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label">Address</label>
+            <input type="text" [(ngModel)]="customer.address" class="form-control shadow-sm" />
+            <div *ngIf="errors.address" class="text-danger small">{{ errors.address }}</div>
+          </div>
+
+        </div>
+
+        <!-- Payment -->
+        <h5 class="fw-semibold mt-4 mb-2">Payment Method</h5>
+        <div class="list-group">
+
+          <label class="list-group-item py-3">
+            <input type="radio" name="payment" value="paypal" [(ngModel)]="paymentMethod" class="form-check-input me-2" />
+            <i class="fa-brands fa-paypal me-1"></i> PayPal
+          </label>
+
+          <label class="list-group-item py-3">
+            <input type="radio" name="payment" value="visa" [(ngModel)]="paymentMethod" class="form-check-input me-2" />
+            <i class="fa-solid fa-credit-card me-1"></i> Visa / Mastercard
+          </label>
+
+          <label class="list-group-item py-3">
+            <input type="radio" name="payment" value="googlepay" [(ngModel)]="paymentMethod" class="form-check-input me-2" />
+            <i class="fa-brands fa-google-pay me-1"></i> Google Pay
+          </label>
+
+          <label class="list-group-item py-3">
+            <input type="radio" name="payment" value="applepay" [(ngModel)]="paymentMethod" class="form-check-input me-2" />
+            <i class="fa-brands fa-apple-pay me-1"></i> Apple Pay
+          </label>
+
+        </div>
+        <div *ngIf="errors.paymentMethod" class="text-danger small mt-1">
+          {{ errors.paymentMethod }}
+        </div>
+
+        <button class="btn btn-dark w-100 py-2 mt-4" (click)="placeOrder()">
+          Place Order
+        </button>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="col-lg-5 col-md-8">
+      <div class="card shadow-sm border-0 p-4">
+
+        <h5 class="fw-bold">Order Summary</h5>
+
+        <ul class="list-group mt-3">
+
+          <li class="list-group-item d-flex justify-content-between" *ngFor="let item of cartItems">
+            <div>
+              {{ item.title }}
+              <div class="text-muted small">Qty: {{ item.quantity }}</div>
+            </div>
+            <span class="fw-semibold">
+              ${{ item.price * item.quantity }}
+            </span>
+          </li>
+
+        </ul>
+
+        <hr />
+
+        <div class="d-flex justify-content-between">
+          <h5 class="fw-bold">Total</h5>
+          <h5 class="fw-bold">${{ total }}</h5>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
